@@ -31,4 +31,4 @@ https://docs.google.com/spreadsheets/d/1qEaDZwR6sJGB5-lt7olHVv_9mrEDhpUikuU4WOeV
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Cloud9sudo mv ~/.c9/stop-if-inactive.sh ~/.c9/stop-if-inactive.sh-SAVE
