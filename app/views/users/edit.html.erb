@@ -1,0 +1,30 @@
+<h2>Sign up</h2>
+
+<%= form_with model: @user, url: user_registration_path do |f| %>
+
+
+  <div class="field">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname ,autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar, class:"input-default" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment ,autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する" %>
+  </div>
+<% end %>
+
