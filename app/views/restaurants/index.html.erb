@@ -1,0 +1,19 @@
+<div class="row">
+<div class="col-3"></div>
+<div class="col-9">
+      <% @restaurants.each do |restaurant| %>
+      <div class="media">
+        <div class="media-img-wrapper">
+          <%= image_tag(restaurant["photo"]["pc"]["l"]) %>
+        </div>
+        <div class="media-body">
+          <%= link_to restaurant["name"],restaurant["urls"]["pc"] %>
+          <h5 class="mt-0"><%= restaurant["name"] %></h5>
+          <p><%= restaurant["catch"] %></p>
+        </div>
+      </div>
+    <% end %>
+</div>
+</div>
+
+

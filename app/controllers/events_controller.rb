@@ -27,8 +27,6 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  
-
   private
 
     def event_params
