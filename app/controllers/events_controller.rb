@@ -4,7 +4,10 @@ class EventsController < ApplicationController
   end
 
   def create
+    @restaurant = Restaurant.new(session[:restaurant])
+    @restaurant.save!
     @event = Event.new(event_params)
+    @event.restaurant_id = @restaurant.id
     @event.save
     redirect_to event_path(@event.id)
   end

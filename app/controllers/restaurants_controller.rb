@@ -12,6 +12,7 @@ class RestaurantsController < ApplicationController
   end
 
   def index
+    @restaurant = Restaurant.new
     uri = "http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ENV["HPG_KEY"]}&count=50&format=json"
     if genre = params[:genre]
       genre = URI.encode_www_form({genre: genre})
@@ -29,5 +30,20 @@ class RestaurantsController < ApplicationController
     response = Net::HTTP.get_response(uri)
     result = JSON.parse(response.body)
     @restaurants = result["results"]["shop"]
+
+    respond_to do |format|
+      format.html { redirect_to search_path }
+      format.js
+    end
+  end
+
+  def new
+    @restaurant = Restaurant.new
+    @restaurant.name = params[:name]
+    @restaurant.url = params[:url]
+    @restaurant.image_url = params[:restaurant_image]
+    @restaurant.catch = params[:catch]
+    session[:restaurant] = @restaurant
+    redirect_to new_event_path
   end
 end

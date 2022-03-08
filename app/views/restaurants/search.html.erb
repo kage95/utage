@@ -1,10 +1,20 @@
-<%= form_with url: restaurants_index_path, method: :get, local: true do |f| %>
+<div class="row">
+  <div class="col-3">
+      <%= form_with url: restaurants_path, method: :get, local: false do |f| %>
+      
+        <%= f.select :genre, @genre_list.map{ |genre| [genre["name"],genre["code"]] } %>
+      
+        <%= f.select :large_area ,@large_area_list.map{ |large_area| [large_area["name"],large_area["code"]] } %>
+      
+        <%= f.text_field :name %>
+      
+        <%= f.submit "検索" %>
+      <% end %>
+  </div>
 
-  <%= f.select :genre, @genre_list.map{ |genre| [genre["name"],genre["code"]] } %>
-
-  <%= f.select :large_area ,@large_area_list.map{ |large_area| [large_area["name"],large_area["code"]] } %>
-
-  <%= f.text_field :name %>
-
-  <%= f.submit "検索" %>
-<% end %>
+  <div id="restaurant-list" class="col-9">
+    <% if @restaurants %>
+      <%= render @restaurants  %>
+    <%end%>
+  </div>
+</div>

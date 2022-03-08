@@ -1,6 +1,10 @@
 <h1>Events#show</h1>
 <p>Find me in app/views/events/show.html.erb</p>
-
 <%= @event.event_name %>
+
+<%= link_to "#{@event.restaurant.name}", @event.restaurant.url %>
+<%= @event.restaurant.catch %>
+<%= image_tag(@event.restaurant.image_url) %>
+
 
 <%= link_to "宴会を編集する", edit_event_path(@event.id) %>
