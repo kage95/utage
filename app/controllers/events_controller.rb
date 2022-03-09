@@ -3,10 +3,25 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def index
+    @events = Event.all
+  end
+
+  def select_restaurant
+    @event = Event.new(event_params)
+    session[:event] = @event
+    redirect_to search_path
+  end
+
+  def confirm
+    @restaurant = Restaurant.new(session[:restaurant])
+    @event = Event.new(session[:event])
+  end
+
   def create
     @restaurant = Restaurant.new(session[:restaurant])
     @restaurant.save!
-    @event = Event.new(event_params)
+    @event = Event.new(session[:event])
     @event.restaurant_id = @restaurant.id
     @event.save
     redirect_to event_path(@event.id)
@@ -25,11 +40,7 @@ class EventsController < ApplicationController
     @event.update(event_params)
     redirect_to event_path(@event.id)
   end
-
-  def index
-    @events = Event.all
-  end
-
+  
   private
 
     def event_params

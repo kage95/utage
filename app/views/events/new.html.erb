@@ -1,26 +1,21 @@
-<%= form_with model:@event ,url:events_path, local:true do |f| %>
+<%= form_with model:@event ,url:select_restaurant_path, local:true do |f| %>
   <div class="field">
-    <%= f.label :event_name %>
+    <%= f.label :宴会名 %>
     <%= f.text_field :event_name %>
   </div>
 
   <div class="field">
-    <%= f.label :date %>
+    <%= f.label :開催日 %>
     <%= f.datetime_select :date %>
   </div>
 
   <div class="field">
-    <%= f.label :limit %>
+    <%= f.label :制限人数 %>
     <%= f.number_field :limit %>
   </div>
 
   <div class="field">
-    <%= f.label :detail %>
-    <%= f.text_field :detail %>
-  </div>
-
-  <div class="field">
-    <%= f.label :restaurant %>
+    <%= f.label :詳細 %>
     <%= f.text_field :detail %>
   </div>
 

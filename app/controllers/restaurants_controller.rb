@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   def search
+    
     large_areas_uri = URI.parse("https://webservice.recruit.co.jp/hotpepper/large_area/v1/?key=#{ENV["HPG_KEY"]}&format=json")
     large_areas_response = Net::HTTP.get_response(large_areas_uri)
     large_areas = JSON.parse(large_areas_response.body)
@@ -44,6 +45,6 @@ class RestaurantsController < ApplicationController
     @restaurant.image_url = params[:restaurant_image]
     @restaurant.catch = params[:catch]
     session[:restaurant] = @restaurant
-    redirect_to new_event_path
+    redirect_to confirm_path
   end
 end
