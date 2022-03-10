@@ -22,7 +22,16 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# ユーザーログイン機能
 gem 'devise'
+# 標準メッセージを日本語化
+gem 'rails-i18n', '~> 6.0.0'
+gem 'devise-i18n'
+
+# Bootstrap
+gem 'devise-bootstrap-views', '~> 1.0'
+# 環境変数
+gem 'dotenv-rails'
 
 
 
@@ -48,6 +57,10 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop', require:false
+  gem 'rubocop-rails', require:false
+  gem 'rubocop-performance', require:false
+  gem "solargraph", "~> 0.44.3"
 end
 
 group :test do
@@ -62,3 +75,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
+gem 'rails-i18n', '~> 6.0.0'

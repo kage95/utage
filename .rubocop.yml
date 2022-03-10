@@ -1,0 +1,39 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+# 空メソッドの場合に、1行のスタイルにしない NG例：def style1; end
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# クラス内にクラスが定義されていないかチェック（無効）
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# クォート指定なし
+Style/StringLiterals:
+  Enabled: false
+
+#半角スペース不要
+SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Style/SpaceInsideBlockBraces:
+  EnforcedStyle: no_space
+
+Layout/SpaceInsideBlockBraces:
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'spec/**/*'

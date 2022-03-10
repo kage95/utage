@@ -40,10 +40,10 @@ class EventsController < ApplicationController
     @event.update(event_params)
     redirect_to event_path(@event.id)
   end
-  
+
   private
 
-    def event_params
-      params.require(:event).permit(:date, :limit, :event_name, :detail)
-    end
+  def event_params
+    params.require(:event).permit(:date, :limit, :event_name, :detail)
+  end
 end

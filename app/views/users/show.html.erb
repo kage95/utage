@@ -1,7 +1,13 @@
-<div class="row">
-  <%= @user.nickname %>
-  <%= @user.comment %>
-  <%= image_tag @user.get_avatar %>
-  <%= link_to "編集",edit_user_path(@user.id)%>
-  <%= link_to "退会する","#"%>
+<div class="container">
+  <div class="row">
+    <div class="media">
+      <%= image_tag @user.get_avatar %>
+      <div class="media-body">
+        <h3><%= @user.nickname %></h3><br>
+        <%= @user.comment %><br>
+        <%= link_to "編集",edit_user_path(@user.id)%><br>
+        <%= link_to "退会する","#"%>
+      </div>
+    </div>
+  </div>
 </div>

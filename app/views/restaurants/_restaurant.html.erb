@@ -4,12 +4,13 @@
         <%= image_tag(restaurant["photo"]["pc"]["l"]) %>
       </div>
       <div class="media-body">
-        <%= link_to restaurant["name"],restaurant["urls"]["pc"] %>
+        <%= link_to restaurant["name"],restaurant["urls"]["pc"], target: :_blank, rel: "noopener noreferrer" %>
         <h5 class="mt-0"><%= restaurant["name"] %></h5>
         <p><%= restaurant["catch"] %></p>
         <%= link_to "このお店にする",new_restaurant_path(name: restaurant["name"],restaurant_image: restaurant["photo"]["pc"]["l"], url: restaurant["urls"]["pc"], catch: restaurant["catch"] ) %>
       </div>
     </div>
 <% end %>
+
 
 
