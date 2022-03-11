@@ -1,13 +1,12 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="media mt-5">
-      <div class="media-img-wrapper mr-lg-5"><%= image_tag @user.get_avatar %></div>
-      <div class="media-body ">
+      <div class="media-img-wrapper"><%= image_tag @user.get_avatar,  class:"rounded-circle" %></div>
+      <div class="media-body ml-lg-5">
         <h3><%= @user.nickname %></h3><br>
         <%= @user.comment %><br>
       </div>
     </div>
-        <%= link_to "編集",edit_user_registration_path(@user.id)%><br>
-        <%= link_to "退会する","#"%>
+
   </div>
 </div>

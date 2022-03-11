@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :nickname, presence: true, length: {minimum:2, maximum:10}
+  validates :email, presence: true, length: { maximum: 255 }
+  validates :comment, presence: true, length: {in: 1..255}
   has_one_attached :avatar
 
   def get_avatar
@@ -11,6 +14,6 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
       avatar.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
     end
-    avatar.variant(resize: "200x200").processed
+    avatar.variant(gravity: :center, resize:"250x250^", crop:"250x250+0+0").processed
   end
 end
