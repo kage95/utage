@@ -4,7 +4,7 @@
       <div class="shadow p-3 mb-5 bg-white rounded mt-5">
         <h1 class="text-center">登録内容編集</h1>
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= form_with model: @user, url: registration_path(@user),method: :patch, local: true do |f| %>
           <%= bootstrap_devise_error_messages! %>
 
           <div class="form-group">
