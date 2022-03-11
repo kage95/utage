@@ -1,16 +1,26 @@
 <% @restaurants.each do |restaurant| %>
-    <div class="media">
-      <div class="media-img-wrapper">
-        <%= image_tag(restaurant["photo"]["pc"]["l"]) %>
-      </div>
-      <div class="media-body">
-        <%= link_to restaurant["name"],restaurant["urls"]["pc"], target: :_blank, rel: "noopener noreferrer" %>
-        <h5 class="mt-0"><%= restaurant["name"] %></h5>
-        <p><%= restaurant["catch"] %></p>
-        <%= link_to "このお店にする",new_restaurant_path(name: restaurant["name"],restaurant_image: restaurant["photo"]["pc"]["l"], url: restaurant["urls"]["pc"], catch: restaurant["catch"] ) %>
+    <div class="border-top mb-3">
+      <div class="d-lg-flex restaurant-item p-lg-3 pt-3">
+          <div class="img-wrapper mr-lg-5">
+            <%= image_tag(restaurant["photo"]["pc"]["l"]) %>
+          </div>
+          <div class="body">
+            <h5 class="py-3 border-bottom">
+              <%= link_to restaurant["name"],restaurant["urls"]["pc"],
+                                          target: :_blank,
+                                          rel: "noopener noreferrer" %>
+            </h5>
+            <p class="font-weigth-bold"><%= restaurant["small_area"]["name"] %></p>
+            <p class="font-weigth-bold"><%= restaurant["budget"]["average"] %></p>
+            <div class="bg-light text-dark mb-3">
+              <small><%= restaurant["access"] %></small><br>
+              <small><%= restaurant["catch"] %></small>
+            </div>
+            <%= link_to "このお店にする !",new_restaurant_path(
+                            name: restaurant["name"],                   restaurant_image: restaurant["photo"]["pc"]["l"], url: restaurant["urls"]["pc"],
+                            catch: restaurant["catch"] ),
+                            class:"btn restaurant-btn text-white" %>
+          </div>
       </div>
     </div>
 <% end %>
-
-
-
