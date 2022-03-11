@@ -1,3 +1,13 @@
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'spec/**/*'
+
 require:
   - rubocop-performance
   - rubocop-rails
@@ -28,12 +38,4 @@ Style/SpaceInsideBlockBraces:
   EnforcedStyle: no_space
 
 Layout/SpaceInsideBlockBraces:
-AllCops:
-  Exclude:
-    - 'Gemfile'
-    - 'node_modules/**/*'
-    - 'bin/*'
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'test/**/*'
-    - 'spec/**/*'
+
