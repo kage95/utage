@@ -1,5 +1,9 @@
-<% if Membership.exists?(user_id: current_user.id, event_id: event.id) %>
+<% if event.user_id == current_user.id %>
+  <%= link_to "宴会をキャンセルする", event_path, method: :delete %>
+<% elsif Membership.exists?(user_id: current_user.id, event_id: event.id) %>
   <%= link_to "辞退する", membership_path, method: :delete %>
+<% elsif !Membership.exists?(user_id: current_user.id, event_id: event.id) && event.memberships.count > event.limit %>
+  <p>満員です。</p>
 <% else %>
   <%= link_to "参加する", memberships_path(event_id: event.id), method: :post %>
 <% end %>
