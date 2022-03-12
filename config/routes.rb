@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'restaurants/search' => 'restaurants#search',as:"search"
-  devise_for :users
   root "homes#top"
+  devise_for :users
   resources :users
   resources :events do
     collection do
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :restaurants,only: [:index,:new]
+  get 'restaurants/search' => 'restaurants#search',as:"search"
   post "events/select_restaurant" => "events#select_restaurant",as:"select_restaurant"
-  get "events/confirm" => "events#confirm",as:"confirm"
+  resources :memberships, only: [:create,:destroy]
 end

@@ -7,7 +7,10 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: {minimum:2, maximum:10}
   validates :email, presence: true, length: { maximum: 255 }
   validates :comment, presence: true, length: {in: 1..255}
+
   has_one_attached :avatar
+  has_many :events, dependent: :destroy
+  has_many :memberships, dependent: :destroy
 
   def get_avatar
     unless avatar.attached?

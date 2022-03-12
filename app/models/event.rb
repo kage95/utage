@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :restaurant
+  belongs_to :user
+  has_many :memberships, dependent: :destroy
 
   validates :event_name, presence: true, length: {minimum:10, maximum:30}
   validates :date, presence: true

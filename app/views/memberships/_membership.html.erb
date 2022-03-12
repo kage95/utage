@@ -1,0 +1,5 @@
+<% if Membership.exists?(user_id: current_user.id, event_id: event.id) %>
+  <%= link_to "辞退する", membership_path, method: :delete %>
+<% else %>
+  <%= link_to "参加する", memberships_path(event_id: event.id), method: :post %>
+<% end %>
