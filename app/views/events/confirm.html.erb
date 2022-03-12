@@ -1,4 +1,40 @@
+<div class="container">
+  <div class="row">
+    <table class="table my-5">
+      <tbody>
+        <tr>
+          <th>宴会名</th>
+          <td><%= @event.event_name %></td>
+        </tr>
+        <tr>
+          <th>開催日</th>
+          <td><%= @event.date %></td>
+        </tr>
+        <tr>
+          <th>制限人数</th>
+          <td><%= @event.limit %></td>
+        </tr>
+        <tr>
+          <th>詳細</th>
+          <td><%= @event.detail %></td>
+        </tr>
+        <tr>
+          <th>お店</th>
+          <td>
+            <%= image_tag(@restaurant.image_url) %>
+            <%= @restaurant.name %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-
-<%= @event.event_name %>
-<%= link_to "決定",events_path,method: :post %>
+  <div class="row justify-content-center">
+    <%= form_with model: @event, url: events_path, local: true do |f| %>
+      <%= f.hidden_field :event %>
+      <%= f.hidden_field :restaurant %>
+      <%= f.submit "これで決定する！",class:"btn btn-done text-white" %>
+      <%= f.submit "修正する", name: "back" ,class:"btn btn-secondary" %>
+    <% end %>
+  </div>
+</div>

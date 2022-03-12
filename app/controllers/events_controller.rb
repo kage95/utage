@@ -19,9 +19,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(session[:restaurant])
-    @restaurant.save!
     @event = Event.new(session[:event])
+    render :new and return if params[:back]
+    @restaurant = Restaurant.new(session[:restaurant])
+    @restaurant.save
     @event.restaurant_id = @restaurant.id
     @event.save
     redirect_to event_path(@event.id)
