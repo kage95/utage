@@ -1,3 +1,16 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.message-text{
+  display: inline-block;
+  max-width: 70%;
+  border-radius: 1rem;
+}
+
+.my-message .message{
+  background-color: #219900;
+}
+
+.others-message .message{
+  background-color: #F3F3F3;
+}

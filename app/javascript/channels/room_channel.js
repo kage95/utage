@@ -1,6 +1,5 @@
 import consumer from "./consumer"
 
-
 document.addEventListener('turbolinks:load', () => {
     const data = document.getElementById("data")
     const event_id = data.getAttribute("data-event-id")
@@ -20,7 +19,8 @@ document.addEventListener('turbolinks:load', () => {
         },
 
         received(data) {
-            messageContainer.insertAdjacentHTML('beforeend', data['message'])
+            const message = `<div class="my-message d-flex flex-row-reverse align-items-start mb-4">${data['message']}</div>`
+            messageContainer.insertAdjacentHTML('beforeend', message)
         }
     })
 })

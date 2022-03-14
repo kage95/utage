@@ -13,11 +13,11 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :messages, dependent: :destroy
 
-  def get_avatar
+  def get_avatar(size)
     unless avatar.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
       avatar.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
     end
-    avatar.variant(gravity: :center, resize:"250x250^", crop:"250x250+0+0").processed
+    avatar.variant(gravity: :center, resize: size, crop:"250x250+0+0").processed
   end
 end

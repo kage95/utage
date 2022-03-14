@@ -1,19 +1,30 @@
-<div id="data" data-event-id="<%= @event.id %>" data-user-id="<%= current_user.id %>"></div>
-
-<div id="message-container">
-  <%= render @messages %>
-</div>
-
-
-<div class="fixed-bottom" id="footer">
-  <%= form_with model: @message, local: false do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, class: 'form-control', rows: '1', maxlength: '500' %>
-    </div>
-    <%= f.hidden_field :event_id, value: @event.id %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <div class="form-group">
-      <%= f.submit '送信', class: 'btn btn-primary btn-block', id: 'message-button' %>
-    </div>
-  <% end %>
+<div class="container">
+  <div id="data" data-event-id="<%= @event.id %>" data-user-id="<%= current_user.id %>"></div>
+  
+  <div id="message-container" class="room bg-light p-4">
+    <% @messages.each do |message| %>
+      <% if message.user_id === current_user.id %>
+        <div class="my-message d-flex flex-row-reverse align-items-start mb-4">
+          <%= render "messages/message", message: message %>
+        </div>
+      <% else %>
+        <div class="others-message d-flex flex-row align-items-start mb-4">
+          <%= render "messages/message", message: message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <div>
+    <%= form_with model: @message, local: false do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', rows: '1', maxlength: '500' %>
+      </div>
+      <%= f.hidden_field :event_id, value: @event.id %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <div class="form-group">
+        <%= f.submit '送信', class: 'btn btn-primary btn-block', id: 'message-button' %>
+      </div>
+    <% end %>
+  </div>
 </div>

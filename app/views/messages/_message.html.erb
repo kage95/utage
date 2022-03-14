@@ -1,4 +1,4 @@
-<div class="message" id="message-<%= message.id %>">
-  <p><%= message.user.nickname %></p>
+<div><%= image_tag message.user.get_avatar("50x50") %></div>
+<div class="message message-text p-2 ms-2 mb-0" id="message-<%= message.id %>">
   <%= simple_format(h message.content) %>
 </div>
