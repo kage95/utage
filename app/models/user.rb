@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :events, dependent: :destroy
   has_many :memberships, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def get_avatar
     unless avatar.attached?
