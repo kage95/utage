@@ -19,8 +19,14 @@ document.addEventListener('turbolinks:load', () => {
         },
 
         received(data) {
-            const message = `<div class="my-message d-flex flex-row-reverse align-items-start mb-4">${data['message']}</div>`
-            messageContainer.insertAdjacentHTML('beforeend', message)
+            if (data["current_user"]==true){
+                const message = `<div class="my-message d-flex flex-row-reverse align-items-start mb-4">${data['message']}</div>`;
+                messageContainer.insertAdjacentHTML('beforeend', message)
+            }
+             else{
+                const message = `<div class="others-message d-flex flex-row align-items-start mb-4">${data['message']}</div>`;
+                messageContainer.insertAdjacentHTML('beforeend', message)
+            }
         }
     })
 })
