@@ -43,10 +43,34 @@ class EventsController < ApplicationController
     @event.update(event_params)
     redirect_to event_path(@event.id)
   end
+  
+  def future_events
+    @user = User.find(params[:user_id])
+    @events = @user.events
+    @event_list = []
+    @events.each do |event| 
+      if event.date.future?
+        @event_list << event
+      end
+    end
+    render 'show_events'
+  end
+  
+  def past_events
+    @user = User.find(params[:user_id])
+    @events = @user.events
+    @event_list = []
+    @events.each do |event| 
+      if event.date.past?
+        @event_list << event
+      end
+    end
+    render 'show_events'
+  end
 
   private
 
-  def event_params
-    params.require(:event).permit(:date, :limit, :event_name, :detail)
-  end
+    def event_params
+      params.require(:event).permit(:date, :limit, :event_name, :detail)
+    end
 end

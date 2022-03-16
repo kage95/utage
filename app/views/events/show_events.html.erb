@@ -1,0 +1,12 @@
+<div class="event-list future-event-list row ">
+  <% @event_list.each do |event| %>
+    <div class="card mr-1" style="width: 18rem;">
+      
+      <div class="card-body">
+        <h5 class="card-title"><%= event.event_name %></h5>
+        <p class="card-text"><%= event.detail %></p>
+        <%= link_to "見にいく！", event_path(event.id), class:"btn btn-info" %>
+      </div>
+    </div>
+  <% end %>
+</div>

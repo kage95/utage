@@ -11,6 +11,7 @@
 
   <section>
     <h3 class="border-bottom">参加予定の宴会</h3>
+    <%= link_to "もっと見る", future_events_events_path(user_id: @user.id) %>
     <div class="event-list future-event-list row ">
       <% @future_events.each do |event| %>
         <div class="card mr-1" style="width: 18rem;">
@@ -27,6 +28,7 @@
   
   <section>
     <h3 class="border-bottom">過去に参加した宴会</h3>
+    <%= link_to "もっと見る", past_events_events_path(user_id: @user.id) %>
     <div class="event-list past-event-list row">
       <% @past_events.each do |event| %>
         <div class="card mr-1" style="width: 18rem;">
