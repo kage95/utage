@@ -9,9 +9,12 @@ class User < ApplicationRecord
   validates :comment, presence: true, length: {in: 1..255}
 
   has_one_attached :avatar
-  has_many :events, dependent: :destroy
-  has_many :memberships, dependent: :destroy
+  has_many :planning_events,class_name: "Event",
+                            foreign_key: "user_id", 
+                            dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :memberships, dependent: :destroy
+  has_many :events, through: :memberships
 
   def get_avatar(size)
     unless avatar.attached?
