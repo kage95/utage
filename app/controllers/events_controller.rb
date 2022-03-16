@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     @event.restaurant_id = @restaurant.id
     @event.user_id = current_user.id
     @event.save
-    membership = Membership.create(user_id: current_user.id, event_id: @event.id)
+    Membership.create(user_id: current_user.id, event_id: @event.id)
     redirect_to event_path(@event.id)
   end
 

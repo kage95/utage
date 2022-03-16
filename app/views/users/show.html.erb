@@ -9,9 +9,35 @@
     </div>
   </section>
 
-  <section class="row">
-    <div class="future-event-list">
-      .
+  <section>
+    <h3 class="border-bottom">参加予定の宴会</h3>
+    <div class="event-list future-event-list row ">
+      <% @future_events.each do |event| %>
+        <div class="card mr-1" style="width: 18rem;">
+          
+          <div class="card-body">
+            <h5 class="card-title"><%= event.event_name %></h5>
+            <p class="card-text"><%= event.detail %></p>
+            <%= link_to "見にいく！", event_path(event.id), class:"btn btn-info" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  
+  <section>
+    <h3 class="border-bottom">過去に参加した宴会</h3>
+    <div class="event-list past-event-list row">
+      <% @past_events.each do |event| %>
+        <div class="card mr-1" style="width: 18rem;">
+          
+          <div class="card-body">
+            <h5 class="card-title"><%= event.event_name %></h5>
+            <p class="card-text"><%= event.detail %></p>
+            <%= link_to "見にいく！", event_path(event.id), class:"btn btn-info" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </section>
 </div>
