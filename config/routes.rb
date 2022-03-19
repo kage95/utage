@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events do
     collection do
-      get :confirm, :future_events, :past_events, :search
+      get :confirm, :future, :past, :search
     end
     resource :rooms, only: [:show]
   end

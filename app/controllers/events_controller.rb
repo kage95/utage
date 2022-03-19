@@ -49,7 +49,7 @@ class EventsController < ApplicationController
     redirect_to event_path(@event.id)
   end
   
-  def future_events
+  def future
     @user = User.find(params[:user_id])
     @events = @user.events
     @event_list = []
@@ -61,7 +61,7 @@ class EventsController < ApplicationController
     render 'show_events'
   end
   
-  def past_events
+  def past
     @user = User.find(params[:user_id])
     @events = @user.events
     @event_list = []
