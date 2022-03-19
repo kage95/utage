@@ -29,6 +29,7 @@ class EventsController < ApplicationController
     @restaurant.save
     @event.restaurant_id = @restaurant.id
     @event.user_id = current_user.id
+    @event.get_image
     @event.save
     Membership.create(user_id: current_user.id, event_id: @event.id)
     redirect_to event_path(@event.id)
@@ -79,7 +80,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:date, :limit, :event_name, :detail, :prefecture_id)
+      params.require(:event).permit(:date, :limit, :event_name, :detail, :prefecture_id, :event_image)
     end
     
     def event_search_params

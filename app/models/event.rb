@@ -9,6 +9,8 @@ class Event < ApplicationRecord
 
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
+  
+  has_one_attached :event_image
 
   validates :event_name, presence: true, length: {minimum:10, maximum:30}
   validates :date, presence: true
@@ -24,4 +26,10 @@ class Event < ApplicationRecord
 
   scope :event_name_like, -> (event_name) { where('event_name LIKE ?', "%#{event_name}%") if event_name.present? }
   scope :date_like, -> (date) { where("date >= ? AND date < ?", date, date + 1) if date.present? }
+  
+  def get_image
+    @image = "image#{rand(1..5)}.jpg"
+    file_path = Rails.root.join("app/assets/images/#{@image}")
+    event_image.attach(io: File.open(file_path), filename: "default-image.jpg")
+  end
 end
