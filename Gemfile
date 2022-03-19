@@ -32,6 +32,8 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views', '~> 1.0'
 # 環境変数
 gem 'dotenv-rails'
+# 都道府県を追加
+gem 'active_hash'
 
 
 

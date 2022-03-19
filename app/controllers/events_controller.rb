@@ -79,7 +79,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:date, :limit, :event_name, :detail)
+      params.require(:event).permit(:date, :limit, :event_name, :detail, :prefecture_id)
     end
     
     def event_search_params

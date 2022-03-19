@@ -7,10 +7,15 @@
             <%= f.label :宴会名 %>
             <%= f.text_field :event_name, class: 'form-control',required: true, maxlength: "50"%>
           </div>
+          
+           <div class="form-group">
+            <%= f.label :都道府県 %>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {},{class: 'form-control',required: true}) %>
+          </div>
 
           <div class="form-group">
             <%= f.label :開催日 %>
-            <%= f.datetime_field :date, class: 'form-control',required: true %>
+            <%= f.datetime_field :date, class: 'form-control',required: true, min: Date.current + 1 %>
           </div>
 
           <div class="form-group">
@@ -29,3 +34,7 @@
           </div>
 
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
