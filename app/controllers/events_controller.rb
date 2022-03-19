@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.search(event_search_params)
+    respond_to do |format|
+      format.html {redirect_to search_events_path}
+      format.js
+    end
   end
 
   def select_restaurant
@@ -67,10 +71,18 @@ class EventsController < ApplicationController
     end
     render 'show_events'
   end
+  
+  def search
+    @event_search_params = event_search_params
+  end
 
   private
 
     def event_params
       params.require(:event).permit(:date, :limit, :event_name, :detail)
+    end
+    
+    def event_search_params
+      params.fetch(:search, {}).permit(:event_name)
     end
 end

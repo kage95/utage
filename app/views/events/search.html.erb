@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row align-items-start pt-5">
+    <div class="col-lg-3">
+      <div class="card">
+        <%= form_with scope: :search, url: events_path, method: :get, local: false do |f| %>
+          <h4 class="card-header">検索条件</h4>
+
+          <div class="p-3">
+            <div class="form-group">
+              
+              
+            </div>
+            
+            <div class="form-group">
+              
+              
+            </div>
+
+            <div class="form-group">
+              <%= f.label :フリーワード%>
+              <%= f.text_field :event_name, value: @event_search_params[:event_name], class:"form-control" %>
+            </div>
+
+            <div class="action mb-3">
+              <%= f.submit "この条件で探す", class:"btn btn-primary btn-block" %>
+            </div>
+
+            
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="card">
+        <h4 class="card-header">検索結果</h4>
+        <div id="event-list" class="card-body">
+          <% if @events %>
+            <%= render @events %>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

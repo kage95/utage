@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :events do
     collection do
-      get :confirm, :future_events, :past_events
+      get :confirm, :future_events, :past_events, :search
     end
     resource :rooms, only: [:show]
   end
@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post "events/select_restaurant" => "events#select_restaurant",as:"select_restaurant"
   resources :memberships, only: [:create,:destroy]
   resources :messages, only: [:create]
+
 end
