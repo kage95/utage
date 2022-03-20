@@ -77,6 +77,7 @@ class EventsController < ApplicationController
   
   def search
     @event_search_params = event_search_params
+    @events = Event.search(event_search_params)
   end
 
   private

@@ -1,3 +1,33 @@
-<div class="image">
-  <%= image_tag "top.jpg" %>
+<div class="container-fluid">
+  <div class="top-image">
+    <%= image_tag "top.jpg" %>
+  </div>
+  
+  <div class="search-wrapper p-2 rounded">
+    <%= form_with scope: :search, url: search_events_path, method: :get, local: true do |f| %>
+      <h4 class="">検索条件</h4>
+        <div class="form-group">
+          <%= f.label :フリーワード%>
+          <%= f.text_field :event_name, value: @event_search_params[:event_name], class:"form-control" %>
+        </div>
+        
+        <div class="row">
+           <div class="form-group col-6">
+            <%= f.label :日程 %>
+            <%= f.date_field :date, value: @event_search_params[:date], class:"form-control" %>
+          </div>
+          <div class="form-group col-6">
+            <%= f.label :都道府県 %>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true},{class: 'form-control'}) %>
+          </div>
+        </div>
+
+        <div class="action mb-3">
+          <%= f.submit "この条件で探す", class:"btn btn-primary btn-block" %>
+        </div>
+    <% end %>
+  </div>
 </div>
+
+
+
