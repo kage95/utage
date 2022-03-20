@@ -2,11 +2,12 @@
   <div class="event_image_wrapper">
     <%= image_tag @event.event_image.variant(gravity: :center).processed %>
   </div>
-  <div class="row">
+  
+  <div class="">
     <table class="table my-5">
       <tbody>
-        <tr>
-          <th>宴会名</th>
+        <tr> 
+          <th style="width: 15%;">宴会名</th>
           <td><%= @event.event_name %></td>
         </tr>
         <tr>

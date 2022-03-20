@@ -50,6 +50,7 @@ class EventsController < ApplicationController
   end
   
   def future
+    @title = "参加予定の宴会一覧"
     @user = User.find(params[:user_id])
     @events = @user.events
     @event_list = []
@@ -62,6 +63,7 @@ class EventsController < ApplicationController
   end
   
   def past
+    @title = "参加した宴会一覧"
     @user = User.find(params[:user_id])
     @events = @user.events
     @event_list = []

@@ -9,3 +9,10 @@
 .event-list{
   min-height: 180px;
 }
+
+.event-detail {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}

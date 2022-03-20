@@ -1,26 +1,40 @@
-<%= form_with model:@event ,url:event_path, local:true do |f| %>
-  <div class="field">
-    <%= f.label :event_name %>
-    <%= f.text_field :event_name %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="shadow p-3 mb-5 bg-white rounded mt-5">
+        <%= form_with model:@event ,url:event_path, local:true do |f| %>
+          <div class="form-group">
+            <%= f.label :宴会名 %>
+            <%= f.text_field :event_name, class: 'form-control',required: true, maxlength: "50"%>
+          </div>
+          
+           <div class="form-group">
+            <%= f.label :都道府県 %>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {},{class: 'form-control',required: true}) %>
+          </div>
 
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.datetime_select :date %>
-  </div>
+          <div class="form-group">
+            <%= f.label :開催日 %>
+            <%= f.datetime_field :date, class: 'form-control',required: true, min: Date.current + 1 %>
+          </div>
 
-  <div class="field">
-    <%= f.label :limit %>
-    <%= f.number_field :limit %>
-  </div>
+          <div class="form-group">
+            <%= f.label :制限人数 %>
+            <%= f.number_field :limit, in: 1..20, class:"form-control",required: true %>
+          </div>
 
-  <div class="field">
-    <%= f.label :detail %>
-    <%= f.text_field :detail %>
-  </div>
+          <div class="form-group">
+            <%= f.label :詳細 %>
+            <%= f.text_area :detail, class: 'form-control',required: true, maxlength: "255" %>
+            <small class="form-text text-muted"><p>最大255文字まで</p></small>
+          </div>
 
-  <div class="action">
-    <%= f.submit%>
-  </div>
+          <div class="action">
+            <%= f.submit "更新する", class:"btn btn-primary btn-block" %>
+          </div>
 
-<% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
