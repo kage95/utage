@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  
   def show
     @user = User.find(params[:id])
     @events = @user.events
@@ -11,8 +13,5 @@ class UsersController < ApplicationController
           @past_events << event
         end
       end
-  end
-
-  def edit
   end
 end

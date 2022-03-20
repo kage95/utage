@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "homes#top"
   devise_for :users
-  resources :users
+  resources :users, only: [:show]
   resources :events do
     collection do
       get :confirm, :future, :past, :search
