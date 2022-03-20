@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticate_user!
+  
   def search
     large_areas_uri = URI.parse("https://webservice.recruit.co.jp/hotpepper/large_area/v1/?key=#{ENV['HPG_KEY']}&format=json")
     large_areas_response = Net::HTTP.get_response(large_areas_uri)
@@ -49,7 +51,7 @@ class RestaurantsController < ApplicationController
 
   private
 
-  def restaurant_params
-    params.require(:restaurant).permit(:name, :url, :restaurant_image, :catch)
-  end
+    def restaurant_params
+      params.require(:restaurant).permit(:name, :url, :restaurant_image, :catch)
+    end
 end
