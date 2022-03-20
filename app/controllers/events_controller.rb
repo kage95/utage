@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :select_restaurant, :edit, :update,
+                                            :confirm, :create, :future, :past]
   def new
     @event = Event.new
   end
