@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+  
   def create
     @message = current_user.messages.create!(message_params)
     @room = Room.find_by(message_params[:room_id])
