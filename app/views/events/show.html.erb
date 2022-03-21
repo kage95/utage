@@ -36,6 +36,10 @@
       </tbody>
     </table>
   </div>
+  
+  <div>
+    <%= link_to "チャットルームへ", event_rooms_path(@event.id) %>
+  </div>
 
   <div class="row">
     <% @event.memberships.each do |member| %>
