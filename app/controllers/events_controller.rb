@@ -33,6 +33,7 @@ class EventsController < ApplicationController
     @event.user_id = current_user.id
     @event.get_image
     @event.save
+    Room.create(event_id: @event.id)
     Membership.create(user_id: current_user.id, event_id: @event.id)
     redirect_to event_path(@event.id)
   end

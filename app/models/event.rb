@@ -28,7 +28,7 @@ class Event < ApplicationRecord
   scope :date_like, -> (date) { where("date >= ? AND date < ?", date, date + 1) if date.present? }
   
   def get_image
-    @image = "image#{rand(1..5)}.jpg"
+    @image = "image#{rand(1..4)}.jpg"
     file_path = Rails.root.join("app/assets/images/#{@image}")
     event_image.attach(io: File.open(file_path), filename: "default-image.jpg")
   end
