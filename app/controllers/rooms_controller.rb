@@ -7,5 +7,4 @@ class RoomsController < ApplicationController
     @messages = @room.messages.includes(:user)
     @message = current_user.messages.build
   end
-
 end

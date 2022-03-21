@@ -4,6 +4,7 @@ document.addEventListener('turbolinks:load', () => {
     const data = document.getElementById("data")
     const event_id = data.getAttribute("data-event-id")
     const user_id = data.getAttribute("data-user-id")
+    const room_id = data.getAttribute("data-room-id")
 
     window.messageContainer = document.getElementById('message-container')
 
@@ -19,7 +20,7 @@ document.addEventListener('turbolinks:load', () => {
         },
 
         received(data) {
-            if (data["current_user"]==true){
+            if (data["user_id"] == user_id){
                 const message = `<div class="my-message d-flex flex-row-reverse align-items-start mb-4">${data['message']}</div>`;
                 messageContainer.insertAdjacentHTML('beforeend', message)
             }

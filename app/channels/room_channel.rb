@@ -3,8 +3,8 @@ class RoomChannel < ApplicationCable::Channel
     @user = User.find(params[:user_id])
     @event = Event.find(params[:event_id])
     @room = @event.room
-    stream_from(@room)
-    stream_for(@user)
+    stream_for(@room)
+    
   end
 
   def unsubscribed

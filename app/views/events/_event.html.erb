@@ -1,4 +1,4 @@
-<% @events.each do |event| %>
+<ol>
   <div class="card mr-1" style="width: 18rem;">
     <%= image_tag event.event_image, class:"card-img-top", width:"100%", height:"100" %>
     <div class="card-body">
@@ -7,4 +7,4 @@
       <%= link_to "見にいく！", event_path(event.id), class:"btn btn-info" %>
     </div>
   </div>
-<% end %>
+</ol>
