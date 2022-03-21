@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
   
   def create
     @message = current_user.messages.create!(message_params)
-    @room = Room.find_by(message_params[:room_id])
+    @room = Room.find(message_params[:room_id])
+    binding.pry
     RoomChannel.broadcast_to(@room, message: @message.template, user_id: current_user.id )
   end
 
