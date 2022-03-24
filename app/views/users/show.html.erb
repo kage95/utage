@@ -1,5 +1,5 @@
 <div class="container">
-  <section class="row justify-content-center">
+  <section class="row justify-content-center mb-3">
     <div class="d-lg-flex align-items-center mt-5">
       <div><%= image_tag @user.get_avatar("250x250"),  class:"rounded-circle" %></div>
       <div class="ml-lg-5">
@@ -10,17 +10,21 @@
   </section>
 
   <section>
-    <h3 class="border-bottom">参加予定の宴会</h3>
-    <%= link_to "もっと見る", future_events_path(user_id: @user.id) %>
-    <div class="event-list row ">
+    <div class="row justify-content-between border-bottom">
+      <h3>参加予定の宴会</h3>
+      <%= link_to "もっと見る", future_events_path(user_id: @user.id) %>
+    </div>
+    <div class="event-list row pt-3">
       <%= render "events/show_events", events: @future_events %>
     </div>
   </section>
   
   <section>
-    <h3 class="border-bottom">過去に参加した宴会</h3>
-    <%= link_to "もっと見る", past_events_path(user_id: @user.id) %>
-    <div class="event-list row">
+    <div class="row justify-content-between border-bottom">
+      <h3>過去に参加した宴会</h3>
+      <%= link_to "もっと見る", past_events_path(user_id: @user.id) %>
+    </div>
+    <div class="event-list row pt-3">
       <%= render "events/show_events", events: @past_events %>
     </div>
   </section>

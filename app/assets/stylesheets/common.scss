@@ -4,24 +4,36 @@
   font-size: 50px !important;
 }
 
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-	background-color: lightgrey;
-}
-
 .btn-primary{
   background-color: #06B6D4!important;
   border-color: #06B6D4!important;
+}
+
+.card {
+  width: 24%;
+}
+
+.card-img-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.card-title {
+  font-size: 1.1rem;
+}
+
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
