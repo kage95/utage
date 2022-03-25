@@ -5,6 +5,7 @@
       <div class="ml-lg-5">
         <h3><%= @user.nickname %></h3><br>
         <%= @user.comment %><br>
+        <%= link_to "編集する",edit_user_registration_path(@user) %>
       </div>
     </div>
   </section>
