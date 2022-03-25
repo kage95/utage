@@ -1,0 +1,5 @@
+  <% if @event.favorited_by?(current_user) %>
+    <%= link_to "♥", event_favorites_path(@event), method: :delete, remote: true %>
+    <% else %> 
+    <%= link_to "♡", event_favorites_path(@event), method: :post, remote: true %>
+  <% end %>

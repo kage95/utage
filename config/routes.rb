@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :confirm, :future, :past, :search
     end
     resource :rooms, only: [:show]
+    resource :favorites, only: [:create, :destroy]
   end
   resources :restaurants,only: [:index,:new]
   get 'restaurants/search' => 'restaurants#search',as:"search"

@@ -9,6 +9,7 @@ class Event < ApplicationRecord
 
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
+  has_many :favorites, dependent: :destroy
   
   has_one_attached :event_image
 
@@ -31,5 +32,9 @@ class Event < ApplicationRecord
     @image = "image#{rand(1..4)}.jpg"
     file_path = Rails.root.join("app/assets/images/#{@image}")
     event_image.attach(io: File.open(file_path), filename: "default-image.jpg")
+  end
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 end

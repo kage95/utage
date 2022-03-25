@@ -9,30 +9,31 @@
   border-color: #06B6D4!important;
 }
 
-.card {
+.event-card {
   width: 24%;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-img-wrapper {
+.event-card .card-img-wrapper {
   position: relative;
   padding-top: 56.25%;
   overflow: hidden;
 }
 
-.card-img-wrapper img {
+.event-card .card-img-wrapper img {
   position: absolute;
   top: 50%;
   width: 100%;
   transform: translateY(-50%);
 }
 
-.card-title {
+.event-card .card-title {
   font-size: 1.1rem;
 }
 
 
 @media screen and (max-width: 768px) {
-  .card {
+  .event-card {
     width: 100%;
     margin-bottom: 20px;
   }

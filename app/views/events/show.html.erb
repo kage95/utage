@@ -3,7 +3,7 @@
     <%= image_tag @event.event_image.variant(gravity: :center).processed %>
   </div>
   
-  <div class="">
+  <div>
     <table class="table my-5">
       <tbody>
         <tr> 
@@ -36,6 +36,12 @@
       </tbody>
     </table>
   </div>
+  
+  <div id="favorite-btn-<%= @event.id %>">
+    <%= render 'favorites/favorite', event: @event %>
+  </div>
+  
+
   
   <div>
     <%= link_to "チャットルームへ", event_rooms_path(@event.id) %>

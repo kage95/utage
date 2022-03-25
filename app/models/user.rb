@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :memberships, dependent: :destroy
   has_many :events, through: :memberships
+  has_many :favorites, dependent: :destroy
 
   def get_avatar(size)
     unless avatar.attached?
