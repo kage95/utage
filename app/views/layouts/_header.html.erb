@@ -23,7 +23,7 @@
           <%= link_to "ログイン",user_session_path ,class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "簡単ログイン","#" ,class:"nav-link" %>
+          <%= link_to "簡単ログイン",users_guest_sign_in_path, method: :post, class:"nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "新規登録",new_user_registration_path ,class:"nav-link" %>

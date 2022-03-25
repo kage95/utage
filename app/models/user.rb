@@ -21,4 +21,12 @@ class User < ApplicationRecord
     end
     avatar.variant(gravity: :center, resize: size, crop:"250x250+0+0").processed
   end
+  
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.nickname = "ゲストユーザー"
+      user.comment = "ゲストログインしています"
+    end
+  end
 end
