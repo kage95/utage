@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = @user.events
+    @favorite_events = @user.favorite_events
     @future_events = []
     @past_events = []
       @events.each do |event| 

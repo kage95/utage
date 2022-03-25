@@ -29,4 +29,14 @@
       <%= render "events/show_events", events: @past_events %>
     </div>
   </section>
+  
+  <section>
+    <div class="row justify-content-between border-bottom">
+      <h3>お気に入りの宴会</h3>
+      <%= link_to "もっと見る", favorite_events_path(user_id: @user.id) %>
+    </div>
+    <div class="event-list row pt-3">
+      <%= render "events/show_events", events: @favorite_events %>
+    </div>
+  </section>
 </div>

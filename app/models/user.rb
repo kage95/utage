@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :events, through: :memberships
   has_many :favorites, dependent: :destroy
+  has_many :favorite_events, through: :favorites,
+                             source: :event,
+                             foreign_key: "user_id",
+                             dependent: :destroy
 
   def get_avatar(size)
     unless avatar.attached?

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :events do
     collection do
-      get :confirm, :future, :past, :search
+      get :confirm, :future, :past, :search, :favorite
     end
     resource :rooms, only: [:show]
     resource :favorites, only: [:create, :destroy]

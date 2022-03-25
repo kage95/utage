@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :select_restaurant, :edit, :update,
-                                            :confirm, :create, :future, :past]
+                                            :confirm, :create, :future, :past, :favorite]
+  before_action :set_user, only: [:future, :past, :favorite]
+  before_action :set_event, only: [:show, :edit, :update]
+  
   def new
     @event = Event.new
   end
@@ -39,22 +42,18 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
     @event.update(event_params)
     redirect_to event_path(@event.id)
   end
   
   def future
     @title = "参加予定の宴会一覧"
-    @user = User.find(params[:user_id])
     @events = @user.events
     @event_list = []
     @events.each do |event| 
@@ -67,7 +66,6 @@ class EventsController < ApplicationController
   
   def past
     @title = "参加した宴会一覧"
-    @user = User.find(params[:user_id])
     @events = @user.events
     @event_list = []
     @events.each do |event| 
@@ -75,6 +73,12 @@ class EventsController < ApplicationController
         @event_list << event
       end
     end
+    render 'show_events'
+  end
+  
+  def favorite
+    @title = "参加した宴会一覧"
+    @event_list = @user.favorite_events
     render 'show_events'
   end
   
@@ -91,5 +95,13 @@ class EventsController < ApplicationController
     
     def event_search_params
       params.fetch(:search, {}).permit(:event_name,:date)
+    end
+    
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+    
+    def set_event
+      @event = Event.find(params[:id])
     end
 end
