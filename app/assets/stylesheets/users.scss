@@ -2,17 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.media{
-  align-items: center!important;
-}
-
-.event-list{
-  min-height: 180px;
-}
-
-.event-detail {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
+.user-event-wrapper{
+  background-color: #f4f4f4;
 }

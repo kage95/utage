@@ -14,10 +14,15 @@ body{
   border-color: #06B6D4!important;
 }
 
+.event-list-wrapper{
+  width: 80%;
+  margin: 0 auto;
+}
+
 .event-list::after{
   content: "";
   display: block;
-  width: 30%;
+  width: 32%;
   margin-right: 0.25rem;
 }
 
@@ -41,6 +46,10 @@ body{
 
 .event-card .card-title {
   font-size: 1.1rem;
+}
+
+.popular-event {
+  background-color: #f4f4f4;
 }
 
 
@@ -70,3 +79,4 @@ footer{
   color: #fff;
   background-color: #373737;
 }
+

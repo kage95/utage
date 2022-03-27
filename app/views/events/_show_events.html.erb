@@ -1,12 +1,14 @@
 <% events.each do |event| %>
-  <div class="event-card mr-lg-1 mb-3">
+  <div class="card event-card mr-lg-1 mb-3 shadow">
     <div class="card-img-wrapper">
       <%= image_tag event.event_image %>
     </div>
-    <div class="card-body">
+    <div class="card-body d-flex flex-column">
       <h5 class="card-title"><%= event.event_name %></h5>
       <small class="card-text event-detail mb-3"><%= event.detail %></small>
-      <%= link_to "見にいく！", event_path(event.id), class:"btn btn-info" %>
+      <div class="mt-auto">
+        <%= link_to "見にいく！", event_path(event.id), class:"btn btn-info" %>
+      </div>
     </div>
   </div>
 <% end %>

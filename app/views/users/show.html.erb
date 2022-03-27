@@ -1,42 +1,66 @@
-<div class="container">
+<div class="container-fluid px-0">
   <section class="row justify-content-center mb-3">
-    <div class="d-lg-flex align-items-center mt-5">
-      <div><%= image_tag @user.get_avatar("250x250"),  class:"rounded-circle" %></div>
+    <div class="d-lg-flex align-items-center mt-5 col-10">
+      <div class="d-flex justify-content-center"><%= image_tag @user.get_avatar("250x250"),  class:"rounded-circle" %></div>
       <div class="ml-lg-5">
-        <h3><%= @user.nickname %></h3><br>
-        <%= @user.comment %><br>
-        <%= link_to "編集する",edit_user_registration_path(@user) %>
+        <div class="d-flex align-items-end">
+          <h3 class="mb-0 mr-2"><%= @user.nickname %></h3>
+          <% if @user.id == current_user.id %>
+            <small>
+              <%= link_to edit_user_registration_path(@user), class:"text-decoration-none text-muted" do %>
+                <i class="fas fa-edit fa-1x"></i>
+              <% end %>
+            </small>
+          <% end %>
+        </div><br>
+        <%= @user.comment %>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="row justify-content-between border-bottom">
-      <h3>参加予定の宴会</h3>
-      <%= link_to "もっと見る", future_events_path(user_id: @user.id) %>
-    </div>
-    <div class="event-list row pt-3">
-      <%= render "events/show_events", events: @future_events %>
-    </div>
-  </section>
-  
-  <section>
-    <div class="row justify-content-between border-bottom">
-      <h3>過去に参加した宴会</h3>
-      <%= link_to "もっと見る", past_events_path(user_id: @user.id) %>
-    </div>
-    <div class="event-list row pt-3">
-      <%= render "events/show_events", events: @past_events %>
+  <section class="user-event-wrapper py-3">
+    <div class="event-list-wrapper">
+      <div class="d-flex justify-content-between border-bottom mb-3">
+        <h3>参加予定の宴会</h3>
+        <%= link_to future_events_path(user_id: @user.id), class:"text-decoration-none text-muted" do %>
+          <i class="fas fa-angle-double-right fa-2x"></i>
+        <% end %>
+      </div>
+      <div class="event-list d-flex flex-wrap justify-content-between">
+        <%= render "events/show_events", events: @future_events %>
+      </div>
     </div>
   </section>
-  
-  <section>
-    <div class="row justify-content-between border-bottom">
-      <h3>お気に入りの宴会</h3>
-      <%= link_to "もっと見る", favorite_events_path(user_id: @user.id) %>
-    </div>
-    <div class="event-list row pt-3">
-      <%= render "events/show_events", events: @favorite_events %>
-    </div>
-  </section>
+
+  <% if @post_events %>
+    <section class="py-3">
+      <div class="event-list-wrapper">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+          <h3>過去に参加した宴会</h3>
+          <%= link_to past_events_path(user_id: @user.id), class:"text-decoration-none text-muted" do %>
+            <i class="fas fa-angle-double-right fa-2x"></i>
+          <% end %>
+        </div>
+        <div class="event-list d-flex flex-wrap justify-content-between">
+          <%= render "events/show_events", events: @past_events %>
+        </div>
+      </div>
+    </section>
+  <% end %>
+
+  <% if @favorite_events %>
+    <section class="user-event-wrapper py-3">
+      <div class="event-list-wrapper">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+          <h3>お気に入りの宴会</h3>
+          <%= link_to favorite_events_path(user_id: @user.id), class:"text-decoration-none text-muted" do %>
+            <i class="fas fa-angle-double-right fa-2x"></i>
+          <% end %>
+        </div>
+        <div class="event-list d-flex flex-wrap justify-content-between">
+          <%= render "events/show_events", events: @favorite_events %>
+        </div>
+      </div>
+    </section>
+  <% end %>
 </div>
