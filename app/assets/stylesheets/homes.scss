@@ -22,11 +22,45 @@
   height: 85vh;
 }
 
+.top-search-text{
+  color: #A6634B;
+  font-weight: bold;
+}
+
 .search-wrapper{
   position: absolute;
-  top: 75%;
+  top: 85%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.8);
   width: 85%;
+}
+
+.search-date,
+.search-area{
+  width: 49%;
+}
+
+.about-site{
+  background-color: #DCD0C0;
+  height: 50vh;
+  
+  p{
+    text-align: center;
+  }
+}
+
+.top-event-list{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.popular-event {
+  background-color: #f4f4f4;
+}
+
+@media screen and (max-width: 768px) {
+  .top-event-list{
+    width: 100%;
+  }
 }

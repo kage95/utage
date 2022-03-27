@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
   def top
     @event_search_params = event_search_params
+    @events = Event.all
   end
   
   private

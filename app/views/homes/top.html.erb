@@ -1,26 +1,63 @@
-<div class="container-fluid">
-  <div class="top-image">
-    <%= image_tag "top.jpg" %>
-  </div>
-  <div class="search-wrapper p-2 rounded">
-    <%= form_with scope: :search, url: search_events_path, method: :get, local: true do |f| %>
-      <h4 class="top-search-text">宴会を探そう！！</h4>
-      <div class="row justify-content-center">
-        <div class="form-group col-md-3">
-          <%= f.date_field :date, value: @event_search_params[:date], class:"form-control" %>
+<div class="container-fluid p-0">
+  <section>
+    <div class="top-image">
+      <%= image_tag "top.jpg" %>
+    </div>
+    <div class="search-wrapper p-2 rounded">
+      <%= form_with scope: :search, url: search_events_path, method: :get, local: true do |f| %>
+        <div class="top-search-text d-flex justify-content-center">
+          <h5 class="heading">宴会を探そう</h5> 
         </div>
-        <div class="form-group col-md-3">
-          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true},{class: 'form-control'}) %>
+        <div class="row justify-content-center">
+          <div class="d-flex justify-content-between col-md-6">
+            <div class="form-group search-date mb-1">
+              <%= f.date_field :date, value: @event_search_params[:date], class:"form-control" %>
+            </div>
+            <div class="form-group search-area mb-1">
+              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true},{class: 'form-control'}) %>
+            </div>
+          </div>
+          <div class="form-group col-md-3 mb-1">
+            <%= f.text_field :event_name, value: @event_search_params[:event_name], class:"form-control", placeholder:"フリーワード" %>
+          </div>
+          <div class="action mb-2 col-md-3 top-search-btn mb-1">
+            <%= f.submit "この条件で探す", class:"btn btn-primary btn-block" %>
+          </div>
         </div>
-        <div class="form-group col-md-3">
-          <%= f.text_field :event_name, value: @event_search_params[:event_name], class:"form-control", placeholder:"フリーワード" %>
-        </div>
-        <div class="action mb-3 col-md-3 top-search-btn">
-          <%= f.submit "この条件で探す", class:"btn btn-primary btn-block" %>
-        </div>
+      <% end %>
+    </div>
+  </section>
+  
+  <section class="about-site d-flex justify-content-center align-items-center">
+    <p class="about-site-text">
+      utageはまだ出会ったことがない人と共通の趣味や夢を通してつながることができるサイトです。</br>
+      キャンプが好き、釣りが好きな人同士や、エンジニア、営業マンなど同じ職業で集まることも可能です。</br>
+      場所は近くの飲食店を予約して、語り合いましょう。
+    </p>
+  </section>
+  
+  <section class="p-3">
+    <div class="top-event-list">
+      <h3 class="heading"><span>新しい宴会</span></h3>
+      <div id="event-list" class="event-list d-flex flex-wrap justify-content-between">
+        <% if @events %>
+          <%= render 'events/event', events: @events %>
+        <%end%>
       </div>
-    <% end %>
-  </div>
+    </div>
+  </section>
+  
+  <section class="popular-event p-3">
+    <div class="top-event-list">
+      <h3 class="heading"><span>人気の宴会</span></h3>
+      <div id="event-list" class="event-list d-flex flex-wrap justify-content-between">
+        <% if @events %>
+          <%= render 'events/event', events: @events %>
+        <%end%>
+      </div>
+    </div>
+  </section>
+  
 </div>
 
 
