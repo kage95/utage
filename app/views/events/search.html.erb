@@ -1,12 +1,16 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row align-items-start pt-5">
-    <div class="col-lg-3">
+    <div class="col-lg-3 position-sticky wedget">
       <div class="card">
         <%= form_with scope: :search, url: events_path, method: :get, local: false do |f| %>
-          <h4 class="card-header">検索条件</h4>
+          <h4 class="card-header">
+            <i class="fas fa-search"></i>
+            検索条件
+          </h4>
           <div class="p-3">
             <div class="form-group">
-              
+              <%= f.label :エリア %>
+              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true, selected: @event_search_params[:prefecture_id]},{class: 'form-control'}) %>
             </div>
             
             <div class="form-group">
@@ -28,10 +32,13 @@
       </div>
     </div>
 
-    <div class="col-lg-9">
+    <div class="col-lg-9 search-result">
       <div class="card">
-        <h4 class="card-header">検索結果</h4>
-        <div id="event-list" class="card-body">
+        <h4 class="card-header">
+          <i class="fas fa-search"></i>
+          検索結果
+        </h4>
+        <div id="event-list" class="card-body d-flex flex-wrap">
           <% if @events %>
             <%= render 'events/event', events: @events %>
           <%end%>

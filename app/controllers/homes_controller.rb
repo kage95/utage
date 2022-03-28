@@ -7,6 +7,6 @@ class HomesController < ApplicationController
   private
   
     def event_search_params
-      params.fetch(:search, {}).permit(:event_name,:date)
+      params.fetch(:search, {}).permit(:event_name,:date,:prefecture_id)
     end
 end

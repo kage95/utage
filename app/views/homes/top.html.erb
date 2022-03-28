@@ -14,7 +14,7 @@
               <%= f.date_field :date, value: @event_search_params[:date], class:"form-control" %>
             </div>
             <div class="form-group search-area mb-1">
-              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true},{class: 'form-control'}) %>
+              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true, selected: @event_search_params[:prefecture_id]},{class: 'form-control'}) %>
             </div>
           </div>
           <div class="form-group col-md-3 mb-1">

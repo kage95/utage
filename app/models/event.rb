@@ -23,10 +23,12 @@ class Event < ApplicationRecord
 
     event_name_like(event_search_params[:event_name])
       .date_like(event_search_params[:date].to_date)
+      .area_like(event_search_params[:prefecture_id])
   end
-
+  
   scope :event_name_like, -> (event_name) { where('event_name LIKE ?', "%#{event_name}%") if event_name.present? }
   scope :date_like, -> (date) { where("date >= ? AND date < ?", date, date + 1) if date.present? }
+  scope :area_like, -> (prefecture_id) { where(prefecture_id: prefecture_id) if prefecture_id.present? }
   
   def get_image
     @image = "image#{rand(1..4)}.jpg"

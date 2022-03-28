@@ -11,16 +11,16 @@
             <div class="p-3">
               <div class="form-group">
                 <%= f.label :大エリア %>
-                <%= f.select :large_area ,@large_area_list.map{ |large_area| [large_area["name"],large_area["code"]] } ,{},{class:"form-control" } %>
+                <%= f.select :large_area ,@large_area_list.map{ |large_area| [large_area["name"],large_area["code"]] } ,{ },{class:"form-control" } %>
               </div>
               <div class="form-group">
                 <%= f.label :ジャンル %>
-                <%= f.select :genre, @genre_list.map{ |genre| [genre["name"],genre["code"]] } ,{},{class:"form-control" } %>
+                <%= f.select :genre, @genre_list.map{ |genre| [genre["name"],genre["code"]] } ,{value: @search_events_path[:date] },{class:"form-control" } %>
               </div>
 
               <div class="form-group">
                 <%= f.label :店名%>
-                <%= f.text_field :name,class:"form-control" %>
+                <%= f.text_field :name,class:"form-control",value: @search_events_path[:event_name] %>
               </div>
 
               <div class="action mb-3">
