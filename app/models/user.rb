@@ -2,9 +2,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true, length: {minimum:2, maximum:10}
-  validates :email, presence: true, length: { maximum: 255 }
-  validates :comment, presence: true, length: {in: 1..255}
+  validates :nickname, presence: true, length: { in: 1..10 }
+  validates :email, presence: true, length: { in: 1..255 }
+  validates :comment, presence: true, length: { in: 1..255 }
 
   has_one_attached :avatar
   has_many :planning_events,class_name: "Event",

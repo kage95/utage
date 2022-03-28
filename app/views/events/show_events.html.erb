@@ -1,5 +1,6 @@
 <div class="container">
-  <h3 class="border-bottom"><%= "#{@title}" %></h3>
-  <%= render "events/show_events", events: @event_list %>
+  <h3 class="border-bottom my-3"><%= "#{@title}" %></h3>
+  <div class="event-list d-flex flex-wrap justify-content-between">
+    <%= render "events/show_events", events: @event_list %>
+  </div>
 </div>
-

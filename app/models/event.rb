@@ -13,10 +13,10 @@ class Event < ApplicationRecord
   
   has_one_attached :event_image
 
-  validates :event_name, presence: true, length: {minimum:10, maximum:30}
+  validates :event_name, presence: true, length: {maximum:20}
   validates :date, presence: true
   validates :limit, presence: true
-  validates :detail, presence: true, length: {minimum:10, maximum:255}
+  validates :detail, presence: true, length: {maximum:255}
 
   scope :search, -> (event_search_params) do
     return if event_search_params.blank?
