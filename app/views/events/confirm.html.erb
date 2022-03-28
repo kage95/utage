@@ -3,7 +3,7 @@
     <table class="table my-5">
       <tbody>
         <tr>
-          <th>宴会名</th>
+          <th style="width: 30%;">宴会名</th>
           <td><%= @event.event_name %></td>
         </tr>
         <tr>
@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <th>開催日</th>
-          <td><%= @event.date %></td>
+          <td><%= l @event.date %></td>
         </tr>
         <tr>
           <th>制限人数</th>
@@ -25,15 +25,32 @@
         <tr>
           <th>お店</th>
           <td>
+            <div class="d-lg-flex">
+          <div class="img-wrapper mr-lg-5">
             <%= image_tag(@restaurant.image_url) %>
-            <%= @restaurant.name %>
+          </div>
+          <div class="body">
+            <h5 class="py-3 border-bottom">
+              <%= link_to @restaurant.name, @restaurant.url,
+                                          target: :_blank,
+                                          rel: "noopener noreferrer" %>
+            </h5>
+            <p class="font-weigth-bold">
+              <i class="fas fa-map-marker-alt"></i>
+              <%= @restaurant.address %>
+            </p>
+            <div class="bg-light text-dark mb-3">
+              <small><%= @restaurant.catch %></small>
+            </div>
+          </div>
+      </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
-  <div class="row justify-content-center">
+  
+  <div class="row justify-content-center mb-5">
     <%= form_with model: @event, url: events_path, local: true do |f| %>
       <%= f.hidden_field :event %>
       <%= f.hidden_field :restaurant %>

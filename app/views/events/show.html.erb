@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <th>開催日</th>
-          <td><%= @event.date %></td>
+          <td><%= l @event.date %></td>
         </tr>
         <tr>
           <th>制限人数</th>
@@ -32,6 +32,19 @@
         <tr>
           <th>詳細</th>
           <td><%= @event.detail %></td>
+        </tr>
+        <tr>
+          <th>参加者</th>
+          <td>
+            <div class="d-flex flex-wrap">
+              <% @event.memberships.each do |member| %>
+              <div class="d-flex align-items-center mr-3">
+                <div><%= image_tag member.user.get_avatar("40x40") %></div>
+                <small><%= member.user.nickname %></small>
+              </div>
+              <% end %>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -72,12 +85,5 @@
 
   <div class="m-2">
      <%= render 'memberships/membership', event: @event %>
-  </div>
-
-   
-  <div class="d-flex">
-    <% @event.memberships.each do |member| %>
-      <%= member.user.nickname %>
-    <% end %>
   </div>
 </div>
