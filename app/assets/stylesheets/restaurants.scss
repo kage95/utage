@@ -10,3 +10,13 @@
 .btn-done{
   background-color: #FFAAA5!important;
 }
+
+.wedget{
+  top: 20px;
+}
+
+@media screen and (max-width: 992px){
+  .search-result{
+    margin-top: 100px;
+  }
+}

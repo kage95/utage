@@ -1,9 +1,12 @@
 <div class="container-fluid">
   <div class="row align-items-start pt-5">
-    <div class="col-lg-3">
+    <div class="col-lg-3 position-sticky wedget">
         <div class="card">
           <%= form_with url: restaurants_path, method: :get, local: false do |f| %>
-            <h4 class="card-header">検索条件</h4>
+            <h4 class="card-header">
+              <i class="fas fa-search"></i>
+              検索条件
+            </h4>
 
             <div class="p-3">
               <div class="form-group">
@@ -37,9 +40,12 @@
         </div>
     </div>
 
-    <div class="col-lg-9">
+    <div class="col-lg-9 search-result">
       <div class="card">
-        <h4 class="card-header">検索条件</h4>
+        <h4 class="card-header">
+          <i class="fas fa-search"></i>
+          検索結果
+        </h4>
         <div id="restaurant-list" class="card-body">
           <% if @restaurants %>
             <%= render @restaurants %>

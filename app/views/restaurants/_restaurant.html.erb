@@ -10,7 +10,10 @@
                                           target: :_blank,
                                           rel: "noopener noreferrer" %>
             </h5>
-            <p class="font-weigth-bold"><%= restaurant["small_area"]["name"] %></p>
+            <p class="font-weigth-bold">
+              <i class="fas fa-map-marker-alt"></i>
+              <%= restaurant["small_area"]["name"] %>
+            </p>
             <p class="font-weigth-bold"><%= restaurant["budget"]["average"] %></p>
             <div class="bg-light text-dark mb-3">
               <small><%= restaurant["access"] %></small><br>
