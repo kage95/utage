@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container px-0 mb-3">
   <div class="event_image_wrapper">
     <%= image_tag @event.event_image.variant(gravity: :center).processed %>
   </div>
@@ -7,8 +7,15 @@
     <table class="table my-5">
       <tbody>
         <tr> 
-          <th style="width: 15%;">宴会名</th>
-          <td><%= @event.event_name %></td>
+          <th style="width: 30%;">宴会名</th>
+          <td>
+            <%= @event.event_name %>
+            <% if @event.planning_user == current_user %>
+              <%= link_to edit_event_path(@event), class:"text-decoration-none text-muted" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th>開催者</th>
@@ -20,39 +27,57 @@
         </tr>
         <tr>
           <th>制限人数</th>
-          <td><%= @event.limit %></td>
+          <td><%= @event.limit %>名</td>
         </tr>
         <tr>
           <th>詳細</th>
           <td><%= @event.detail %></td>
         </tr>
-        <tr>
-          <th>お店</th>
-          <td>
-            <%= image_tag(@event.restaurant.image_url) %>
-            <%= @event.restaurant.name %>
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>
   
-  <div id="favorite-btn-<%= @event.id %>">
+  <div class="restaurant-wrapper mb-3 py-3">
+    <h3 class="heading"><span>お店はこちら</span></h3>
+      <div class="d-lg-flex restaurant-item p-2">
+          <div class="img-wrapper mr-lg-5">
+            <%= image_tag(@event.restaurant.image_url) %>
+          </div>
+          <div class="body">
+            <h5 class="py-3 border-bottom">
+              <%= link_to @event.restaurant.name, @event.restaurant.url,
+                                          target: :_blank,
+                                          rel: "noopener noreferrer" %>
+            </h5>
+            <p class="font-weigth-bold">
+              <i class="fas fa-map-marker-alt"></i>
+              <%= @event.restaurant.address %>
+            </p>
+            <div class="bg-light text-dark mb-3">
+              <small><%= @event.restaurant.catch %></small>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+  <div id="favorite-btn-<%= @event.id %>" class="m-2">
     <%= render 'favorites/favorite', event: @event %>
   </div>
   
-  <%= link_to "編集する", edit_event_path(@event) %>
-  
-  <div>
-    <%= link_to "チャットルームへ", event_rooms_path(@event.id) %>
+  <div class="m-2">
+    <%= link_to event_rooms_path(@event.id), class:"btn btn-primary btn-block btn-lg" do %>
+      <i class="fas fa-comment mr-1"></i>チャットルームへ
+    <% end %>
   </div>
 
-  <div class="row">
+  <div class="m-2">
+     <%= render 'memberships/membership', event: @event %>
+  </div>
+
+   
+  <div class="d-flex">
     <% @event.memberships.each do |member| %>
       <%= member.user.nickname %>
     <% end %>
   </div>
-
-    <%= render 'memberships/membership', event: @event %>
-
 </div>

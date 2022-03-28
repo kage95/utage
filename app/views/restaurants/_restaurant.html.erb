@@ -11,8 +11,10 @@
                                           rel: "noopener noreferrer" %>
             </h5>
             <p class="font-weigth-bold">
+              エリア：<%= restaurant["small_area"]["name"] %></br>
               <i class="fas fa-map-marker-alt"></i>
-              <%= restaurant["small_area"]["name"] %>
+              <%= restaurant["address"] %>
+              
             </p>
             <p class="font-weigth-bold"><%= restaurant["budget"]["average"] %></p>
             <div class="bg-light text-dark mb-3">
@@ -20,7 +22,10 @@
               <small><%= restaurant["catch"] %></small>
             </div>
             <%= link_to "このお店にする !",new_restaurant_path(
-                            name: restaurant["name"],                   restaurant_image: restaurant["photo"]["pc"]["l"], url: restaurant["urls"]["pc"],
+                            name: restaurant["name"],
+                            restaurant_image: restaurant["photo"]["pc"]["l"],
+                            address: restaurant["address"],
+                            url: restaurant["urls"]["pc"],
                             catch: restaurant["catch"] ),
                             class:"btn restaurant-btn text-white" %>
           </div>

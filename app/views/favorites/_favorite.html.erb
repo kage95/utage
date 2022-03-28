@@ -1,5 +1,10 @@
   <% if @event.favorited_by?(current_user) %>
-    <%= link_to "♥", event_favorites_path(@event), method: :delete, remote: true %>
+    <%= link_to event_favorites_path(@event), class:"btn btn-outline-danger btn-block btn-lg", method: :delete, remote: true do %>
+      <i class="fas fa-heart-broken mr-1"></i>お気に入りを解除
+    <% end %>
     <% else %> 
-    <%= link_to "♡", event_favorites_path(@event), method: :post, remote: true %>
+    <%= link_to event_favorites_path(@event), class:"btn restaurant-btn text-white btn-block btn-lg", method: :post, remote: true do %>
+       <i class="fas fa-heart mr-1"></i>お気に入りに追加
+      <% end %>
   <% end %>
+  

@@ -44,6 +44,7 @@ class RestaurantsController < ApplicationController
     @restaurant.name = params[:name]
     @restaurant.url = params[:url]
     @restaurant.image_url = params[:restaurant_image]
+    @restaurant.address = params[:address]
     @restaurant.catch = params[:catch]
     session[:restaurant] = @restaurant
     redirect_to confirm_events_path
@@ -52,6 +53,6 @@ class RestaurantsController < ApplicationController
   private
 
     def restaurant_params
-      params.require(:restaurant).permit(:name, :url, :restaurant_image, :catch)
+      params.require(:restaurant).permit(:name, :url, :restaurant_image, :catch, :address)
     end
 end

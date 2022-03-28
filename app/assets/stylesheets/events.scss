@@ -16,3 +16,19 @@
 th, td {
   @include font-size(1rem);
 }
+
+.restaurant-wrapper{
+  background: #dcd0c0;
+}
+
+.restaurant-item{
+  width: 80%;
+  margin: 0 auto;
+  background: #f4f4f4;
+}
+
+@media screen and (max-width: 768px) {
+  .restaurant-item {
+    width: 95%;
+  }
+}

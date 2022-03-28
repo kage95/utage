@@ -15,12 +15,12 @@
               </div>
               <div class="form-group">
                 <%= f.label :ジャンル %>
-                <%= f.select :genre, @genre_list.map{ |genre| [genre["name"],genre["code"]] } ,{value: @search_events_path[:date] },{class:"form-control" } %>
+                <%= f.select :genre, @genre_list.map{ |genre| [genre["name"],genre["code"]] } ,{},{class:"form-control" } %>
               </div>
 
               <div class="form-group">
                 <%= f.label :店名%>
-                <%= f.text_field :name,class:"form-control",value: @search_events_path[:event_name] %>
+                <%= f.text_field :name,class:"form-control"%>
               </div>
 
               <div class="action mb-3">
