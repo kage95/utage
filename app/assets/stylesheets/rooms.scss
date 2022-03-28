@@ -1,3 +1,15 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.room{
+  background: #a0e8fc;
+  min-height: 90vh;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.message-form{
+  max-width: 768px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}

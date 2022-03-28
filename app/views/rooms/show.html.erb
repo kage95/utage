@@ -1,7 +1,7 @@
 <div class="container">
   <div id="data" data-event-id="<%= @event.id %>" data-user-id="<%= current_user.id %>" data-room-id="<%= @room.id %>"></div>
   
-  <div id="message-container" class="room bg-light p-4">
+  <div id="message-container" class="room p-4">
     <% @messages.each do |message| %>
       <% if message.user_id === current_user.id %>
         <div class="my-message d-flex flex-row-reverse align-items-start mb-4">
@@ -15,14 +15,14 @@
     <% end %>
   </div>
   
-  <div>
+  <div class="fixed-bottom message-form">
     <%= form_with model: @message, local: false do |f| %>
-      <div class="form-group">
+      <div class="form-group mb-0">
         <%= f.text_area :content, class: 'form-control', rows: '1', maxlength: '500' %>
       </div>
       <%= f.hidden_field :event_id, value: @event.id %>
       <%= f.hidden_field :room_id, value: @room.id %>
-      <div class="form-group">
+      <div class="form-group mb-0">
         <%= f.submit '送信', class: 'btn btn-primary btn-block', id: 'message-button' %>
       </div>
     <% end %>
