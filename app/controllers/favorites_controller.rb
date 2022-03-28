@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def create
-    @event = Event.find_by(params[:event_id])
+    @event = Event.find(params[:event_id])
     current_user.favorites.create!(event_id: @event.id)
   end
   
