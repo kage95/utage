@@ -2,29 +2,29 @@
   <section>
     <div class="top-image">
       <%= image_tag "top.jpg" %>
-    </div>
-    <div class="search-wrapper p-2 rounded">
-      <%= form_with scope: :search, url: search_events_path, method: :get, local: true do |f| %>
-        <div class="top-search-text d-flex justify-content-center">
-          <h5 class="heading">宴会を探そう</h5> 
-        </div>
-        <div class="row justify-content-center">
-          <div class="d-flex justify-content-between col-md-6">
-            <div class="form-group search-date mb-1">
-              <%= f.date_field :date, value: @event_search_params[:date], class:"form-control" %>
+      <div class="search-wrapper p-2 rounded">
+        <%= form_with scope: :search, url: search_events_path, method: :get, local: true do |f| %>
+          <div class="top-search-text d-flex justify-content-center">
+            <h5 class="heading">宴会を探そう</h5> 
+          </div>
+          <div class="row justify-content-center">
+            <div class="d-flex justify-content-between col-md-6">
+              <div class="form-group search-date mb-1">
+                <%= f.date_field :date, value: @event_search_params[:date], class:"form-control" %>
+              </div>
+              <div class="form-group search-area mb-1">
+                <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true, selected: @event_search_params[:prefecture_id]},{class: 'form-control'}) %>
+              </div>
             </div>
-            <div class="form-group search-area mb-1">
-              <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: true, selected: @event_search_params[:prefecture_id]},{class: 'form-control'}) %>
+            <div class="form-group col-md-3 mb-1">
+              <%= f.text_field :event_name, value: @event_search_params[:event_name], class:"form-control", placeholder:"フリーワード" %>
+            </div>
+            <div class="action mb-2 col-md-3 top-search-btn mb-1">
+              <%= f.submit "この条件で探す", class:"btn btn-primary btn-block" %>
             </div>
           </div>
-          <div class="form-group col-md-3 mb-1">
-            <%= f.text_field :event_name, value: @event_search_params[:event_name], class:"form-control", placeholder:"フリーワード" %>
-          </div>
-          <div class="action mb-2 col-md-3 top-search-btn mb-1">
-            <%= f.submit "この条件で探す", class:"btn btn-primary btn-block" %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </section>
   
