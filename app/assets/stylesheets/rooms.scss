@@ -9,7 +9,16 @@
 }
 
 .message-form{
+  width: 100%;
   max-width: 768px;
-  padding: 0 1rem;
   margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+p{
+  color: #f4f4f4;
+  word-break: break-all;
 }

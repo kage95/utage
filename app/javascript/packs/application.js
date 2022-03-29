@@ -11,6 +11,8 @@ import 'bootstrap';
 import '../stylesheets/application';
 import '@fortawesome/fontawesome-free/js/all'
 
+require("chatroom.js")
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

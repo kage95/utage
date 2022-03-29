@@ -30,4 +30,9 @@ document.addEventListener('turbolinks:load', () => {
             }
         }
     })
+    const documentElement = document.documentElement
+    window.scrollToBottom = () => {
+        window.scroll(0, documentElement.scrollHeight)
+    }
+    scrollToBottom()
 })
