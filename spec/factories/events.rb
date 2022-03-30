@@ -6,5 +6,9 @@ FactoryBot.define do
     detail { "宴会のテストです" }
     association :planning_user
     association :restaurant
+    
+      trait :with_restaurant do
+        restaurant { FactoryBot.create(:restaurant) }
+      end
   end
 end
