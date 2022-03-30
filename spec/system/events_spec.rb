@@ -8,7 +8,6 @@ RSpec.describe "Events", type: :system do
   scenario "新規宴会情報を入力する" do
     user = FactoryBot.create(:user)
     event_params = FactoryBot.attributes_for(:event)
-    restaurant_params = FactoryBot.attributes_for(:restaurant)
     sign_in user
 
     visit new_event_path

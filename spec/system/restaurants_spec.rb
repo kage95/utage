@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe "Restaurants", type: :system do
   scenario "飲食店を検索する", js: true do
     user = FactoryBot.create(:user)
-    event_params = FactoryBot.attributes_for(:event)
-    restaurant_params = FactoryBot.attributes_for(:restaurant)
     sign_in user
     
     visit search_path

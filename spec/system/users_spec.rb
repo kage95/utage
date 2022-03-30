@@ -2,14 +2,36 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
   before do
-    driven_by(:rack_test)
+    @user = FactoryBot.create(:user)
   end
-
-  scenario "ログインする" do
-    user = FactoryBot.create(:user)
-    sign_in user
+  
+  context "ログイン済みとして" do
+    before do
+      sign_in @user
+    end
     
-    visit root_path
-    expect(page).to have_content "マイページ"
+    scenario "ログインする" do
+      visit root_path
+      expect(page).to have_content "マイページ"
+    end
+  
+    scenario "マイページに遷移" do
+      visit user_path(@user)
+      expect(page).to have_content "#{@user.nickname}"
+    end
   end
+  
+  context "未ログインとして" do
+    
+    scenario "新規宴会作成ページに行くとログインページに遷移" do
+      visit new_event_path
+      redirect_to new_user_session_path
+    end
+  
+    scenario "マイページに行くとログインページに遷移" do
+      visit user_path(@user)
+      redirect_to new_user_session_path
+    end
+  end
+  
 end
