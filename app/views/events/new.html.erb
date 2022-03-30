@@ -5,32 +5,32 @@
         <%= form_with model:@event ,url:select_restaurant_path, local:true do |f| %>
           <div class="form-group">
             <%= f.label :宴会名 %>
-            <%= f.text_field :event_name, class: 'form-control',required: true, maxlength: "20" %>
+            <%= f.text_field :event_name, id: "event_name_field", class: 'form-control',required: true, maxlength: "20" %>
           </div>
           
            <div class="form-group">
             <%= f.label :都道府県 %>
-            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {},{class: 'form-control',required: true}) %>
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {},{id: "event_prefecture_field", class: 'form-control',required: true}) %>
           </div>
 
           <div class="form-group">
             <%= f.label :開催日 %>
-            <%= f.datetime_field :date, class: 'form-control',required: true, min: Date.current + 1 %>
+            <%= f.datetime_field :date, id: "event_date_field", class: 'form-control',required: true, min: Date.current + 1 %>
           </div>
 
           <div class="form-group">
             <%= f.label :制限人数 %>
-            <%= f.number_field :limit, in: 1..20, class:"form-control",required: true %>
+            <%= f.number_field :limit, in: 1..20,id: "event_limit_field", class:"form-control",required: true %>
           </div>
 
           <div class="form-group">
             <%= f.label :詳細 %>
-            <%= f.text_area :detail, class: 'form-control',required: true, maxlength: "255" %>
+            <%= f.text_area :detail,id: "event_detail_field", class: 'form-control',required: true, maxlength: "255" %>
             <small class="form-text text-muted"><p>最大255文字まで</p></small>
           </div>
 
           <div class="action">
-            <%= f.submit "飲食店を決める →", class:"btn btn-primary btn-block" %>
+            <%= f.submit "飲食店を決める →",id: "to_select_restaurant", class:"btn btn-primary btn-block" %>
           </div>
 
         <% end %>
