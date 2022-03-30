@@ -18,7 +18,9 @@
   transform: translateX(-50%);
 }
 
-p{
-  color: #f4f4f4;
+.my-message,
+.other-message {
+  p{
   word-break: break-all;
+  }
 }
