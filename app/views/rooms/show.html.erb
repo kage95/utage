@@ -18,7 +18,7 @@
   <div id="message-form" class="message-form">
     <%= form_with model: @message, local: false do |f| %>
       <div class="form-group mb-0">
-        <%= f.text_area :content, class: 'form-control', rows: '1', maxlength: '500' %>
+        <%= f.text_area :content,id: "message_input_area", class: 'form-control', rows: '1', maxlength: '500' %>
       </div>
       <%= f.hidden_field :event_id, value: @event.id %>
       <%= f.hidden_field :room_id, value: @room.id %>

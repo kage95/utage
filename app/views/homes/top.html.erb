@@ -40,8 +40,8 @@
     <div class="event-list-wrapper">
       <h3 class="heading"><span>新しい宴会</span></h3>
       <div id="event-list" class="event-list d-flex flex-wrap justify-content-between">
-        <% if @events %>
-          <%= render 'events/event', events: @events %>
+        <% if @new_events %>
+          <%= render 'events/show_events', events: @new_events %>
         <%end%>
       </div>
     </div>
@@ -51,8 +51,8 @@
     <div class="event-list-wrapper">
       <h3 class="heading"><span>人気の宴会</span></h3>
       <div id="event-list" class="event-list d-flex flex-wrap justify-content-between">
-        <% if @events %>
-          <%= render 'events/event', events: @events %>
+        <% if @popular_events %>
+          <%= render 'events/show_events', events: @popular_events %>
         <%end%>
       </div>
     </div>
