@@ -80,13 +80,14 @@ footer{
   background-color: #373737;
 }
 
-
 .wedget{
   top: 20px;
 }
 
-.search-result{
-  z-index: 10;
+@media screen and (min-width: 992px){
+  .wedget{
+    position: sticky!important;
+  }
 }
 
 @media screen and (max-width: 992px){
