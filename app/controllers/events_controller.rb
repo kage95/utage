@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :select_restaurant, :edit, :update,
                                             :confirm, :create, :future, :past, :favorite]
   before_action :set_user, only: [:future, :past, :favorite]
-  before_action :set_event, only: [:show, :edit, :update]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   
   def new
     @event = Event.new
@@ -52,6 +52,11 @@ class EventsController < ApplicationController
     redirect_to event_path(@event.id)
   end
   
+  def destroy
+    @event.destroy
+    redirect_to user_path(current_user)
+  end
+  
   def future
     @title = "参加予定の宴会一覧"
     @events = @user.events
@@ -77,7 +82,7 @@ class EventsController < ApplicationController
   end
   
   def favorite
-    @title = "参加した宴会一覧"
+    @title = "お気に入りした宴会一覧"
     @event_list = @user.favorite_events
     render 'show_events'
   end

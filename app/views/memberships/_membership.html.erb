@@ -1,5 +1,5 @@
 <% if event.user_id == current_user.id %>
-  <%= link_to "宴会をキャンセルする", event_path, class:"btn btn-outline-danger btn-block btn-lg", method: :delete %>
+  <%= link_to "宴会をキャンセルする", event_path, class:"btn btn-outline-danger btn-block btn-lg", method: :delete ,data: { confirm: "本当にキャンセルしますか?" }%>
 <% elsif Membership.exists?(user_id: current_user.id, event_id: event.id) %>
   <%= link_to "辞退する", membership_path, class:"btn btn-outline-danger btn-block btn-lg", method: :delete %>
 <% elsif !Membership.exists?(user_id: current_user.id, event_id: event.id) && event.memberships.count > event.limit %>
