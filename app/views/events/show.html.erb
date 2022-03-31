@@ -72,18 +72,22 @@
           </div>
       </div>
     </div>
-  
-  <div id="favorite-btn-<%= @event.id %>" class="m-2">
-    <%= render 'favorites/favorite', event: @event %>
-  </div>
-  
-  <div class="m-2">
-    <%= link_to event_rooms_path(@event.id), class:"btn btn-primary btn-block btn-lg" do %>
-      <i class="fas fa-comment mr-1"></i>チャットルームへ
+    
+  <% if user_signed_in? %>
+    <div id="favorite-btn-<%= @event.id %>" class="m-2">
+      <%= render 'favorites/favorite', event: @event %>
+    </div>
+    
+    <% if current_user.membership?(@event) %>
+      <div class="m-2">
+        <%= link_to event_rooms_path(@event.id), class:"btn btn-primary btn-block btn-lg" do %>
+          <i class="fas fa-comment mr-1"></i>チャットルームへ
+        <% end %>
+      </div>
     <% end %>
-  </div>
-
-  <div class="m-2">
-     <%= render 'memberships/membership', event: @event %>
-  </div>
+  
+    <div class="m-2">
+       <%= render 'memberships/membership', event: @event %>
+    </div>
+  <% end %>
 </div>

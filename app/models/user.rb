@@ -45,4 +45,8 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+  
+  def membership?(event)
+    memberships.exists?(event_id: event.id)
+  end
 end
