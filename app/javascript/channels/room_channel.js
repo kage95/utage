@@ -11,6 +11,11 @@ document.addEventListener('turbolinks:load', () => {
     if (messageContainer === null) {
         return
     }
+    const documentElement = document.documentElement
+    window.scrollToBottom = () => {
+        window.scroll(0, documentElement.scrollHeight)
+    }
+    scrollToBottom()
 
     consumer.subscriptions.create({channel: "RoomChannel", event_id: event_id, user_id: user_id}, {
         connected() {
@@ -28,11 +33,7 @@ document.addEventListener('turbolinks:load', () => {
                 const message = `<div class="others-message d-flex flex-column align-items-start mb-4">${data['message']}</div>`;
                 messageContainer.insertAdjacentHTML('beforeend', message)
             }
+            scrollToBottom()
         }
     })
-    const documentElement = document.documentElement
-    window.scrollToBottom = () => {
-        window.scroll(0, documentElement.scrollHeight)
-    }
-    scrollToBottom()
 })
