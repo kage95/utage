@@ -1,34 +1,38 @@
-<% @restaurants.each do |restaurant| %>
+<% if @restaurants.empty? %>
+  <h5>飲食店が見つかりませんでした。他の条件で検索してください。</h5>
+<% else %>
+  <% @restaurants.each do |restaurant| %>
     <div class="border-top mb-3">
       <div class="d-lg-flex p-lg-3 pt-3">
-          <div class="img-wrapper mr-lg-5">
-            <%= image_tag(restaurant["photo"]["pc"]["l"]) %>
+        <div class="img-wrapper mr-lg-5">
+          <%= image_tag(restaurant["photo"]["pc"]["l"]) %>
+        </div>
+        <div class="body">
+          <h5 class="py-3 border-bottom">
+            <%= link_to restaurant["name"],restaurant["urls"]["pc"],
+                                        target: :_blank,
+                                        rel: "noopener noreferrer" %>
+          </h5>
+          <p class="font-weigth-bold">
+            エリア：<%= restaurant["small_area"]["name"] %></br>
+            <i class="fas fa-map-marker-alt"></i>
+            <%= restaurant["address"] %>
+          </p>
+          <p class="font-weigth-bold"><%= restaurant["budget"]["average"] %></p>
+          <div class="bg-light text-dark mb-3">
+            <small><%= restaurant["access"] %></small><br>
+            <small><%= restaurant["catch"] %></small>
           </div>
-          <div class="body">
-            <h5 class="py-3 border-bottom">
-              <%= link_to restaurant["name"],restaurant["urls"]["pc"],
-                                          target: :_blank,
-                                          rel: "noopener noreferrer" %>
-            </h5>
-            <p class="font-weigth-bold">
-              エリア：<%= restaurant["small_area"]["name"] %></br>
-              <i class="fas fa-map-marker-alt"></i>
-              <%= restaurant["address"] %>
-              
-            </p>
-            <p class="font-weigth-bold"><%= restaurant["budget"]["average"] %></p>
-            <div class="bg-light text-dark mb-3">
-              <small><%= restaurant["access"] %></small><br>
-              <small><%= restaurant["catch"] %></small>
-            </div>
-            <%= link_to "このお店にする !",new_restaurant_path(
-                            name: restaurant["name"],
-                            restaurant_image: restaurant["photo"]["pc"]["l"],
-                            address: restaurant["address"],
-                            url: restaurant["urls"]["pc"],
-                            catch: restaurant["catch"] ),
-                            class:"btn restaurant-btn text-white" %>
-          </div>
+          <%= link_to "このお店にする !",new_restaurant_path(
+                          name: restaurant["name"],
+                          restaurant_image: restaurant["photo"]["pc"]["l"],
+                          address: restaurant["address"],
+                          url: restaurant["urls"]["pc"],
+                          catch: restaurant["catch"] ),
+                          class:"btn restaurant-btn text-white" %>
+        </div>
       </div>
     </div>
+  <% end %>
 <% end %>
+
