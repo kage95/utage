@@ -26,9 +26,13 @@
           <i class="fas fa-angle-double-right fa-2x"></i>
         <% end %>
       </div>
-      <div class="event-list d-flex flex-wrap justify-content-between">
-        <%= render "events/show_events", events: @future_events %>
-      </div>
+      <% if @future_events.empty? %>
+        <p>まだ参加予定の宴会はありません、、、宴会を探しましょう！</p>
+      <% else %>
+        <div class="event-list d-flex flex-wrap justify-content-between">
+          <%= render "events/show_events", events: @future_events %>
+        </div>
+      <% end %>
     </div>
   </section>
 
