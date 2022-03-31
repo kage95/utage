@@ -1,5 +1,7 @@
-<div><%= image_tag url_for(message.user.get_avatar("50x50").processed) %></div>
-<div class="message message-text p-2 ms-2 mb-0" id="message-<%= message.id %>">
-  <%= simple_format(h message.content) %>
+<div class="message">
+  <div><%= image_tag url_for(message.user.get_avatar("50x50")), class:"rounded-circle" %></div>
+  <div class="message-text p-2" id="message-<%= message.id %>">
+    <%= simple_format(h message.content) %>
 </div>
-
+</div>
+<small class="sender-name"><%= message.user.nickname %></small>

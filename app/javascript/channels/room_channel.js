@@ -21,11 +21,11 @@ document.addEventListener('turbolinks:load', () => {
 
         received(data) {
             if (data["user_id"] == user_id){
-                const message = `<div class="my-message d-flex flex-row-reverse align-items-start mb-4">${data['message']}</div>`;
+                const message = `<div class="my-message d-flex flex-column align-items-start mb-4">${data['message']}</div>`;
                 messageContainer.insertAdjacentHTML('beforeend', message)
             }
              else{
-                const message = `<div class="others-message d-flex flex-row align-items-start mb-4">${data['message']}</div>`;
+                const message = `<div class="others-message d-flex flex-column align-items-start mb-4">${data['message']}</div>`;
                 messageContainer.insertAdjacentHTML('beforeend', message)
             }
         }

@@ -4,11 +4,11 @@
   <div id="message-container" class="room p-1 mb-5">
     <% @messages.each do |message| %>
       <% if message.user_id === current_user.id %>
-        <div class="my-message d-flex flex-row-reverse align-items-start mb-4">
+        <div class="my-message d-flex flex-column align-items-start mb-4">
           <%= render "messages/message", message: message %>
         </div>
       <% else %>
-        <div class="others-message d-flex flex-row align-items-start mb-4">
+        <div class="others-message d-flex flex-column align-items-start mb-4">
           <%= render "messages/message", message: message %>
         </div>
       <% end %>
