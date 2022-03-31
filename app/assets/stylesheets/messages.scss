@@ -1,10 +1,6 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.message-text{
-  max-width: 70%;
-  border-radius: 1rem;
-}
 
 .my-message{
   .message{
@@ -14,11 +10,7 @@
   }
  .message-text{
   background-color: #4bc74e;
-  max-width: 70%;
   border-radius: 1rem;
-    p{
-      margin-bottom: 0;
-    }
   }
   .sender-name{
     margin-left: auto;
@@ -31,10 +23,14 @@
   }
  .message-text{
   background-color: #F3F3F3;
-  max-width: 70%;
   border-radius: 1rem;
-    p{
-      margin-bottom: 0;
-    }
+  }
+}
+
+.message{
+  max-width: 60%;
+  p{
+    margin-bottom: 0;
+    word-break: break-all;
   }
 }
