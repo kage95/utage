@@ -1,6 +1,6 @@
 class Restaurant < ApplicationRecord
   has_many :events
-  
+
   validates :name, presence: true
   validates :address, presence: true
   validates :catch, presence: true
