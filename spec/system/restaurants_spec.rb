@@ -4,7 +4,7 @@ RSpec.describe "Restaurants", type: :system do
   scenario "飲食店を検索する", js: true do
     user = FactoryBot.create(:user)
     sign_in user
-    
+
     visit search_path
     fill_in "restaurant_name_field", with: "肉"
     select "大阪", from: "restaurant_area_field"

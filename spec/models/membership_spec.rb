@@ -7,7 +7,7 @@ RSpec.describe Membership, type: :model do
         expect(FactoryBot.build(:membership)).to be_valid
       end
     end
-    
+
     context "保存できない時" do
       it "宴会に関連付けられていない" do
         expect(FactoryBot.build(:membership, event: nil)).to be_invalid

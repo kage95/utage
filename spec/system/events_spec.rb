@@ -19,5 +19,4 @@ RSpec.describe "Events", type: :system do
     click_button "飲食店を決める →"
     expect(page).to have_content "検索条件"
   end
-  
 end
