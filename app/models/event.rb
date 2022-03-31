@@ -31,7 +31,7 @@ class Event < ApplicationRecord
   scope :area_like, -> (prefecture_id) { where(prefecture_id: prefecture_id) if prefecture_id.present? }
   
   def get_image
-    @image = "image#{rand(1..4)}.jpg"
+    @image = "image#{rand(1..5)}.jpg"
     file_path = Rails.root.join("app/assets/images/#{@image}")
     event_image.attach(io: File.open(file_path), filename: "default-image.jpg")
   end
