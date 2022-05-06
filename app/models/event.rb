@@ -39,4 +39,10 @@ class Event < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  def fix_event(restaurant)
+    self.restaurant_id = restaurant.id
+    get_image
+    save
+  end
 end

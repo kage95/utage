@@ -34,10 +34,8 @@ class EventsController < ApplicationController
     render(:new) && return if params[:back]
     @restaurant = Restaurant.new(session[:restaurant])
     @restaurant.save
-    @event.restaurant_id = @restaurant.id
     @event.user_id = current_user.id
-    @event.get_image
-    @event.save
+    @event.fix_event(@restaurant)
     Room.create(event_id: @event.id)
     Membership.create(user_id: current_user.id, event_id: @event.id)
     redirect_to event_path(@event.id)
