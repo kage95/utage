@@ -47,6 +47,9 @@ class EventsController < ApplicationController
   end
 
   def edit
+    unless current_user == @event.planning_user
+      redirect_to @event
+    end
   end
 
   def update
