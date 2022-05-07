@@ -1,16 +1,17 @@
 import consumer from "./consumer"
 
 document.addEventListener('turbolinks:load', () => {
-    const data = document.getElementById("data")
-    const event_id = data.getAttribute("data-event-id")
-    const user_id = data.getAttribute("data-user-id")
-    const room_id = data.getAttribute("data-room-id")
 
     window.messageContainer = document.getElementById('message-container')
 
     if (messageContainer === null) {
         return
     }
+
+    const data = document.getElementById("data")
+    const event_id = data.getAttribute("data-event-id")
+    const user_id = data.getAttribute("data-user-id")
+
     const documentElement = document.documentElement
     window.scrollToBottom = () => {
         window.scroll(0, documentElement.scrollHeight)
