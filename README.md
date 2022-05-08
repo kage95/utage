@@ -23,6 +23,17 @@
 - 宴会を企画するとき
 - 人との繋がり、新しい出会いを求めているとき
 
+## 使用技術等
+- Ruby 2.6.3
+- Ruby on Rails 6.1.4
+- Javascript,jQuery,Ajax
+- MySQL 5.7.22
+- RSpec
+- ホットペッパーAPI
+- GitHub Actions(自動デプロイ)
+- AWS(EC2/EIP/RDS)
+
+
 ## 機能一覧
 - LINE風チャット機能(ActionCable)
 - 飲食店検索機能(ホットペッパーAPI,Ajax)
@@ -36,14 +47,8 @@
 https://docs.google.com/spreadsheets/d/1qEaDZwR6sJGB5-lt7olHVv_9mrEDhpUikuU4WOeV1Ps/edit?usp=sharing
 
 ## 機能movie
-### 飲食店検索機能(ホットペッパーAPI,Ajax)<video src="https://user-images.githubusercontent.com/81172243/161055285-e1bdfc99-51c5-4358-9632-466a596dcb6d.mov"></video>
-### LINE風チャット機能(ActionCable)<video src="https://user-images.githubusercontent.com/81172243/161050642-92294507-7355-41d3-8d74-338fb65f31d5.mov"></video>
-</span>
+### 飲食店検索機能(ホットペッパーAPI,Ajax)
+![飲食店検索640px](https://user-images.githubusercontent.com/81172243/167286331-ecfcbb15-6ef4-4814-b342-1527208a36a3.gif)
 
-
-## 開発環境
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
-- IDE：Cloud9
+### LINE風チャット機能(ActionCable)
+![May-08-2022 16-48-08](https://user-images.githubusercontent.com/81172243/167286910-e6959bad-5545-4484-8e2f-268b7001cf36.gif)
