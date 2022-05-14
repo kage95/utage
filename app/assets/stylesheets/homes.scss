@@ -52,6 +52,35 @@
 
 .popular-event {
   background-color: #f4f4f4;
+  counter-reset: num;
+  .card-badge{
+    display: block;
+    position: relative;
+    counter-increment: num 1;
+    &::before{
+      content: counter(num) "位";
+      position: absolute;
+      z-index: 2;
+      top: .5rem;
+      left: .3125rem;
+      color: #fff;
+      font-size: .875rem;
+      font-weight: bold;
+      transform: rotate(-45deg);
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-width: 3.75rem 3.75rem 0 0;
+      border-style: solid;
+      border-color: #F1991D transparent transparent transparent;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
