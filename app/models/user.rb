@@ -24,7 +24,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
       avatar.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
     end
-    avatar.variant(gravity: :center, resize: size, crop:"250x250+0+0").processed
+    avatar.variant(gravity: :center, resize: size, crop: "#{size}+0+0").processed
   end
   
   def self.guest
