@@ -2,12 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.top-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .top-search-btn{
   width: 80%;
   max-width: 100%;
@@ -20,6 +14,9 @@
 .top-image{
   position: relative;
   height: 85vh;
+  background-image: image-url('top.jpg');
+  background-position: center center;
+  background-size: cover;
 }
 
 .top-search-text{
@@ -84,6 +81,11 @@
 }
 
 @media screen and (max-width: 768px) {
+
+  .top-image{
+    background-position: 80% center;
+  }
+
   .top-event-list{
     width: 100%;
   }

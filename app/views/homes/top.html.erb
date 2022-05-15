@@ -1,7 +1,6 @@
 <div class="container-fluid p-0">
   <section>
     <div class="top-image">
-      <%= image_tag "top.jpg" %>
       <div class="search-wrapper p-2 rounded">
         <%= form_with scope: :search, url: search_events_path, method: :get, local: true do |f| %>
           <div class="top-search-text d-flex justify-content-center">
