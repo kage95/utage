@@ -41,9 +41,16 @@
 .about-site{
   background-color: #DCD0C0;
   height: 50vh;
-  
+  .about-site-head{
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: .5rem;
+  }
   p{
     text-align: center;
+    line-height: 2.5;
+    margin: 0 0 50px;
   }
 }
 
@@ -86,6 +93,19 @@
     background-position: 80% center;
   }
 
+  .about-site{
+    .about-site-head{
+      font-size: 1.3rem;
+      letter-spacing: 0.3rem;
+    }
+    p{
+    line-height: 1.5;
+    .text-bar{
+    display: block;
+    }
+  }
+  }
+  
   .top-event-list{
     width: 100%;
   }
