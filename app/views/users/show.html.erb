@@ -1,5 +1,5 @@
 <div class="container-fluid px-0">
-  <section class="row justify-content-center mb-3">
+  <section class="row justify-content-center mx-0 mb-3">
     <div class="d-lg-flex align-items-center justify-content-center mt-5 col-10">
       <div class="d-flex justify-content-center"><%= image_tag @user.get_avatar("250x250^"),  class:"rounded-circle" %></div>
       <div class="ml-lg-5">
@@ -20,7 +20,7 @@
 
   <section class="user-event-wrapper py-3">
     <div class="event-list-wrapper">
-      <div class="d-flex justify-content-between border-bottom mx-0 mb-3">
+      <div class="d-flex justify-content-between border-bottom mb-3">
         <h3>参加予定の宴会</h3>
         <%= link_to future_events_path(user_id: @user.id), class:"text-decoration-none text-muted" do %>
           <i class="fas fa-angle-double-right fa-2x"></i>
