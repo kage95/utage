@@ -1,7 +1,7 @@
 <div class="container-fluid px-0">
   <div id="data" data-event-id="<%= @event.id %>" data-user-id="<%= current_user.id %>" data-room-id="<%= @room.id %>"></div>
   
-  <div id="message-container" class="room p-1 mb-5">
+  <div id="message-container" class="room p-1 pb-5">
     <% @messages.each do |message| %>
       <% if message.user_id === current_user.id %>
         <div class="my-message d-flex flex-column align-items-start mb-4">
