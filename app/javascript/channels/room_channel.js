@@ -9,6 +9,7 @@ document.addEventListener('turbolinks:load', () => {
     }
 
     const data = document.getElementById("data")
+    const channel = "RoomChannel"
     const event_id = data.getAttribute("data-event-id")
     const user_id = data.getAttribute("data-user-id")
 
@@ -18,23 +19,31 @@ document.addEventListener('turbolinks:load', () => {
     }
     scrollToBottom()
 
-    consumer.subscriptions.create({channel: "RoomChannel", event_id: event_id, user_id: user_id}, {
-        connected() {
-        },
+    const isSubscribed = (channel, event_id, user_id) => {
+        const identifier = `{"channel":"${channel}","event_id":"${event_id}","user_id":"${user_id}"}`
+        const subscription = consumer.subscriptions.findAll(identifier)
+        return !!subscription.length
+    }
 
-        disconnected() {
-        },
+    if (!isSubscribed(channel, event_id, user_id)) {
+        consumer.subscriptions.create({ channel: "RoomChannel", event_id: event_id, user_id: user_id }, {
+            connected() {
+            },
 
-        received(data) {
-            if (data["user_id"] == user_id){
-                const message = `<div class="my-message d-flex flex-column align-items-start mb-4">${data['message']}</div>`;
-                messageContainer.insertAdjacentHTML('beforeend', message)
+            disconnected() {
+            },
+
+            received(data) {
+                if (data["user_id"] == user_id) {
+                    const message = `<div class="my-message d-flex flex-column align-items-start mb-4">${data['message']}</div>`;
+                    messageContainer.insertAdjacentHTML('beforeend', message)
+                }
+                else {
+                    const message = `<div class="others-message d-flex flex-column align-items-start mb-4">${data['message']}</div>`;
+                    messageContainer.insertAdjacentHTML('beforeend', message)
+                }
+                scrollToBottom()
             }
-             else{
-                const message = `<div class="others-message d-flex flex-column align-items-start mb-4">${data['message']}</div>`;
-                messageContainer.insertAdjacentHTML('beforeend', message)
-            }
-            scrollToBottom()
-        }
-    })
+        })
+    }
 })
