@@ -39,7 +39,7 @@
             <div class="d-flex flex-wrap">
               <% @event.memberships.each do |member| %>
               <div class="d-flex align-items-center mr-3">
-                <div><%= image_tag member.user.get_avatar("40x40") %></div>
+                <div><%= image_tag member.user.get_avatar("40x40^"), class:"rounded-circle mr-1" %></div>
                 <small><%= member.user.nickname %></small>
               </div>
               <% end %>
