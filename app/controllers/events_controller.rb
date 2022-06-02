@@ -63,12 +63,7 @@ class EventsController < ApplicationController
   def future
     @title = "参加予定の宴会一覧"
     @events = @user.events
-    @event_list = []
-    @events.each do |event|
-      if event.date.future?
-        @event_list << event
-      end
-    end
+    @event_list = @events.map { |event| event if event.date.future? }.compact
     render 'show_events'
   end
 
