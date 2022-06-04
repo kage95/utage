@@ -33,12 +33,14 @@ class EventsController < ApplicationController
     @event = Event.new(session[:event])
     render(:new) && return if params[:back]
     @restaurant = Restaurant.new(session[:restaurant])
-    @restaurant.save
-    @event.user_id = current_user.id
-    @event.fix_event(@restaurant)
-    Room.create(event_id: @event.id)
-    Membership.create(user_id: current_user.id, event_id: @event.id)
-    redirect_to event_path(@event.id)
+    Event.transaction do
+      @restaurant.save
+      @event.user_id = current_user.id
+      @event.fix_event(@restaurant)
+      Room.create!(event_id: @event.id)
+      Membership.create!(user_id: current_user.id, event_id: @event.id)
+      redirect_to event_path(@event.id)
+    end
   end
 
   def show

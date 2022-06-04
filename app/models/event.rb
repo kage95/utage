@@ -43,6 +43,6 @@ class Event < ApplicationRecord
   def fix_event(restaurant)
     self.restaurant_id = restaurant.id
     get_image
-    save
+    save!
   end
 end
