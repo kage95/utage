@@ -72,12 +72,7 @@ class EventsController < ApplicationController
   def past
     @title = "参加した宴会一覧"
     @events = @user.events
-    @event_list = []
-    @events.each do |event|
-      if event.date.past?
-        @event_list << event
-      end
-    end
+    @event_list = @events.map { |event| event if event.date.past? }.compact
     render 'show_events'
   end
 
