@@ -1,3 +1,4 @@
+<!--
 <img width="1440" alt="スクリーンショット 2022-05-07 19 02 10" src="https://user-images.githubusercontent.com/81172243/167249531-78ebe6c2-3079-42d6-9d42-d9c9b9738959.png">
 
 ## サイト概要
@@ -22,6 +23,7 @@
 ## 主な利用シーン
 - 宴会を企画するとき
 - 人との繋がり、新しい出会いを求めているとき
+-->
 
 ## 使用技術等
 - Ruby 2.6.3
@@ -41,6 +43,7 @@
 - 宴会をお気に入りが多い順で表示
 - レスポンシブデザイン
 
+<!--
 詳細はこちらをご覧ください。
 
 https://docs.google.com/spreadsheets/d/1qEaDZwR6sJGB5-lt7olHVv_9mrEDhpUikuU4WOeV1Ps/edit?usp=sharing
@@ -51,3 +54,4 @@ https://docs.google.com/spreadsheets/d/1qEaDZwR6sJGB5-lt7olHVv_9mrEDhpUikuU4WOeV
 
 ### LINE風チャット機能(ActionCable)
 ![May-08-2022 16-48-08](https://user-images.githubusercontent.com/81172243/167286910-e6959bad-5545-4484-8e2f-268b7001cf36.gif)
+-->
